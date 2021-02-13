@@ -5,6 +5,7 @@ import TripIndex from './workouts/TripIndex'
 
 function App() {
   const [sessionToken,setSessionToken]=useState('');
+  const api_key='5ae2e3f221c38a28845f05b60282c4994410542a110ccc5c7ff90aa1';
   
   useEffect(()=>{
     if(localStorage.getItem('token')){
@@ -24,7 +25,7 @@ function App() {
   }
 
   const protectedViews=()=>{
-    return (sessionToken===localStorage.getItem('token')?<TripIndex token={sessionToken}/>:<Auth updateToken={updateToken}/>)
+    return (sessionToken===localStorage.getItem('token')?<TripIndex token={sessionToken} api_key={api_key}/>:<Auth updateToken={updateToken}/>)
   }
   return (
     <div >

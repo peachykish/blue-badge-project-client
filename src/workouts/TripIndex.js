@@ -42,7 +42,7 @@ const TripIndex = (props) => {
     <Container>
         <Row>
             <Col md="3">
-                <TripCreate token={props.token} fetchTrips={fetchTrips}/>
+                <TripCreate token={props.token} fetchTrips={fetchTrips} api_key={props.api_key}/>
             </Col>
             <Col md="9">
                 <TripTable trips={trips} editUpdateTrip={editUpdateTrip} updateOn={updateOn} token={props.token} fetchTrips={fetchTrips}/>
