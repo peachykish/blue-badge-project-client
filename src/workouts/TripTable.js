@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import {Table, Button} from 'reactstrap';
 
 const TripTable=(props)=>{
+    console.log(props);
     const deleteTrip=(trip)=>{
         fetch(`http://localhost:3000/trip/${trip.id}`,{
             method:'DELETE',
