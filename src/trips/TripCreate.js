@@ -9,16 +9,25 @@ const TripCreate=(props)=>{
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log('place',place)
+        console.log('description',description)
         fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${place}&apikey=${props.api_key}`)
         .then(res=>res.json())
         .then(json=>{
+            console.log("json data",json)
             setLat(json.lat);
-            setLon(json.lon)
-        });
+            setLon(json.lon);
+            console.log("lon from api",lon)
+            console.log("lat from api",lat)
 
+        })
+        .then(newTrip());
+        
+       };
+       const newTrip=()=>{
         fetch("http://localhost:3000/trip", {
             method: "POST",
-            body:JSON.stringify({trip:{description:description,lat:lat,lon:lon}}),
+            body:JSON.stringify({trip:{description:description,place:place,lat:lat,lon:lon}}),
             headers: new Headers({
              'Content-Type': 'application/json',
               'Authorization': props.token,
@@ -32,25 +41,25 @@ const TripCreate=(props)=>{
                setLon(0.0);
                props.fetchTrips();
            });
-       };
-
+        }
     return(
         <>
             <h3>Create a new trip</h3>
             <Form type='submit' onSubmit={handleSubmit}>
             <FormGroup>
-                    <Label htmlFor="place"/>
-                    <Input name="place" value={place} onChange={(e)=>setPlace(e.target.value)}/>
+                    <Label htmlFor="place"/>Where to?
+                    <Input placeholder="e.g. Seattle" name="place" value={place} onChange={(e)=>setPlace(e.target.value)}/>
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="description"/>
-                    <Input name="description" value={description} 
+                    What's the reason?
+                    <Input placeholder ="e.g. Spring Break!" name="description" value={description} 
                     onChange={(e)=>setDescription(e.target.value)}/>
                 </FormGroup>
-                
 
                 <Button type="submit">Submit</Button>
                 </Form>
+
         </>
     )
 }

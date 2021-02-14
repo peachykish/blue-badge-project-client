@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import Sitebar from './home/Navbar';
 import Auth from './auth/Auth'
-import TripIndex from './workouts/TripIndex'
+import TripIndex from './trips/TripIndex'
 
 function App() {
   const [sessionToken,setSessionToken]=useState('');
