@@ -3,11 +3,14 @@ import {Container, Row, Col} from 'reactstrap'
 import TripCreate from './TripCreate'
 import TripTable from "./TripTable";
 import TripEdit from "./TripEdit";
+import DestinationTable from '../destinations/DestinationTable'
 
 const TripIndex = (props) => {
   const [trips, setTrips] = useState([]);
   const [updateActive,setUpdateActive]=useState(false);
   const [tripToUpdate,setTripToUpdate]=useState({});
+  const [tripForDestinations,setTripForDestinations]=useState({});
+
 
   const fetchTrips = () => {
     fetch("http://localhost:3000/trip", {
@@ -45,10 +48,12 @@ const TripIndex = (props) => {
                 <TripCreate token={props.token} fetchTrips={fetchTrips} api_key={props.api_key}/>
             </Col>
             <Col md="9">
-                <TripTable trips={trips} editUpdateTrip={editUpdateTrip} updateOn={updateOn} token={props.token} fetchTrips={fetchTrips}/>
+                <TripTable trips={trips} setTripForDestinations={setTripForDestinations} tripForDestinations={tripForDestinations} editUpdateTrip={editUpdateTrip} updateOn={updateOn} token={props.token} fetchTrips={fetchTrips}/>
             </Col>
             {updateActive?<TripEdit tripToUpdate={tripToUpdate} updateOff={updateOff} token={props.token} fetchTrips={fetchTrips}/>:<></>}
         </Row>
+        Hey
+        {tripForDestinations.id==null?<></>:<DestinationTable token={props.token} trip={tripForDestinations}/>}
     </Container>
     );
 };
