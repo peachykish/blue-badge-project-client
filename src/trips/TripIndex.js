@@ -3,7 +3,7 @@ import {Container, Row, Col} from 'reactstrap'
 import TripCreate from './TripCreate'
 import TripTable from "./TripTable";
 import TripEdit from "./TripEdit";
-import DestinationTable from '../destinations/DestinationTable'
+import DestinationIndex from '../destinations/DestinationIndex'
 
 const TripIndex = (props) => {
   const [trips, setTrips] = useState([]);
@@ -52,8 +52,7 @@ const TripIndex = (props) => {
             </Col>
             {updateActive?<TripEdit tripToUpdate={tripToUpdate} updateOff={updateOff} token={props.token} fetchTrips={fetchTrips}/>:<></>}
         </Row>
-        Hey
-        {tripForDestinations.id==null?<></>:<DestinationTable token={props.token} trip={tripForDestinations}/>}
+        {tripForDestinations.id==null?<></>:<DestinationIndex api_key={props.api_key} token={props.token} trip={tripForDestinations}/>}
     </Container>
     );
 };

@@ -4,43 +4,47 @@ import {Button,Form,FormGroup,Label,Input} from 'reactstrap'
 const TripCreate=(props)=>{
     const [description,setDescription]=useState('');
     const [place,setPlace]=useState('');
-    const [lat,setLat]=useState(0.0);
-    const [lon,setLon]=useState(0.0);
+    const [lat,setLat]=useState(0.00000);
+    const [lon,setLon]=useState(0.00000);
 
-    const handleSubmit = (e) => {
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const response= await fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${place}&apikey=${props.api_key}`);
+    //     const data = await response.json();
+    //     setLat(data.lat.toFixed(5));
+    //     setLon(data.lon.toFixed(5));
+    //     // if(lat!=0){newTrip()}
+    //     newTrip();
+    //    };
+
+       const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('place',place)
-        console.log('description',description)
         fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${place}&apikey=${props.api_key}`)
-        .then(res=>res.json())
-        .then(json=>{
-            console.log("json data",json)
-            setLat(json.lat);
-            setLon(json.lon);
-            console.log("lon from api",lon)
-            console.log("lat from api",lat)
-
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data);
+            setLat(data.lat);
+            setLon(data.lon);
         })
         .then(newTrip());
-        
        };
+
        const newTrip=()=>{
         fetch("http://localhost:3000/trip", {
             method: "POST",
             body:JSON.stringify({trip:{description:description,place:place,lat:lat,lon:lon}}),
             headers: new Headers({
-             'Content-Type': 'application/json',
-              'Authorization': props.token,
-           })
-         })
-           .then((res) => res.json())
-           .then((tripData) => {
-               console.log('tripData',tripData);
-               setDescription('');
-               setLat(0.0);
-               setLon(0.0);
-               props.fetchTrips();
-           });
+                'Content-Type': 'application/json',
+                'Authorization': props.token,
+            })
+        })
+            .then((res) => res.json())
+            .then((tripData) => {
+                console.log('tripData',tripData);
+                setDescription('');
+                setPlace('');
+                props.fetchTrips();
+            });
         }
     return(
         <>
