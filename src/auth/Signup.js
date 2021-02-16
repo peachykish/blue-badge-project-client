@@ -38,7 +38,7 @@ const Signup = (props)=>{
                     <Input onChange={(e)=>setPassword(e.target.value)} name = "password" value={password}/>
 
                 </FormGroup>
-                <Button  type="submit">Login</Button>
+                <Button  type="submit">Signup</Button>
             </Form>
 
         </div>
