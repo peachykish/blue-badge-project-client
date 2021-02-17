@@ -17,7 +17,7 @@ const TripTable=(props)=>{
         })
     }
     const addDestinations=(trip)=>{
-        console.log("props from add", props);
+        // console.log("props from add", props);
         console.log("trip",trip)
         props.setTripForDestinations(trip)
         console.log(props.tripForDestinations);
