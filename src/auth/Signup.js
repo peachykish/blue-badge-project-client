@@ -26,19 +26,20 @@ const Signup = (props)=>{
 
     return(
         <div>
-            <h1>Signup</h1>
+            {/* <h1>Welcome to Travel App!</h1> */}
+            <h2 className="siglog">Signup</h2>
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup>
-                    <Label htmlFor="username">Username</Label>
-                    <Input onChange={(e)=>setUsername(e.target.value)} name = "username" value={username}/>
+                    <Label id="suLabel" htmlFor="username">Username</Label>
+                    <Input id="textBox" onChange={(e)=>setUsername(e.target.value)} name = "username" value={username}/>
                     <p className="warning-text">{warning}</p>
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="password">Password</Label>
-                    <Input onChange={(e)=>setPassword(e.target.value)} name = "password" value={password}/>
+                    <Label id="suLabel" htmlFor="password">Password</Label>
+                    <Input id="textBox" onChange={(e)=>setPassword(e.target.value)} name = "password" value={password}/>
 
                 </FormGroup>
-                <Button  type="submit">Signup</Button>
+                <Button id="suBtn" type="submit">Signup</Button>
             </Form>
 
         </div>
