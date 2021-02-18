@@ -25,14 +25,15 @@ const TripCreate=(props)=>{
             console.log(data);
             setLat(data.lat);
             setLon(data.lon);
+            return [data.lat,data.lon]
         })
-        .then(newTrip());
+        .then((data)=>newTrip(data[0], data[1]));
        };
 
-       const newTrip=()=>{
+       const newTrip=(latitude, longitude)=>{
         fetch("http://localhost:3000/trip", {
             method: "POST",
-            body:JSON.stringify({trip:{description:description,place:place,lat:lat,lon:lon}}),
+            body:JSON.stringify({trip:{description:description,place:place,lat:latitude,lon:longitude}}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token,
