@@ -6,7 +6,6 @@ import DestinationCreate from './DestinationCreate';
 
 const DestinationIndex=(props)=>{
     console.log("destination props",props);
-    const [possibleDestinations,setPossibleDestinations]=useState([]);
     const [selectedDestinations,setSelecteDestinations]=useState([]);
 
     const deleteDestination=(destination)=>{
@@ -22,7 +21,7 @@ const DestinationIndex=(props)=>{
             props.fetchTrips()
         })
     }
-
+    
     
     
     const fetchSelectedDestinations=()=>{
@@ -73,12 +72,6 @@ const DestinationIndex=(props)=>{
             {/* {tripForDestinations.id==null?<></>:<DestinationIndex api_key={props.api_key} token={props.token} trip={tripForDestinations}/>} */}
         </Container>
         );
-    return(
-        <>
-        <h3>Destination Table</h3>
-        <h4>Here are some places to go in {props.trip.place}:</h4>
-        </>
-    )
 }
 
 export default DestinationIndex;

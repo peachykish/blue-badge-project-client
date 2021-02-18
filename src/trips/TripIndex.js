@@ -52,7 +52,7 @@ const TripIndex = (props) => {
             </Col>
             {updateActive?<TripEdit tripToUpdate={tripToUpdate} updateOff={updateOff} token={props.token} fetchTrips={fetchTrips}/>:<></>}
         </Row>
-        {tripForDestinations.id==null?<></>:<DestinationIndex api_key={props.api_key} token={props.token} trip={tripForDestinations}/>}
+        {tripForDestinations==null?<></>:<DestinationIndex api_key={props.api_key} token={props.token} trip={tripForDestinations}/>}
     </Container>
     );
 };
