@@ -2,7 +2,7 @@
 const DestinationTable=(props)=>{
 
     return (
-        <div></div>
+        <div>This will be the destination table</div>
     )
 }
 
