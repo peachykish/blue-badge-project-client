@@ -7,16 +7,6 @@ const TripCreate=(props)=>{
     const [lat,setLat]=useState(0.00000);
     const [lon,setLon]=useState(0.00000);
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const response= await fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${place}&apikey=${props.api_key}`);
-    //     const data = await response.json();
-    //     setLat(data.lat.toFixed(5));
-    //     setLon(data.lon.toFixed(5));
-    //     // if(lat!=0){newTrip()}
-    //     newTrip();
-    //    };
-
        const handleSubmit = (e) => {
         e.preventDefault();
         fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${place}&apikey=${props.api_key}`)
