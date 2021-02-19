@@ -18,7 +18,9 @@ const DestinationIndex=(props)=>{
               }),
             })
               .then((res) => res.json())
-              .then((tripData) => {console.log("trip destinations",tripData);setSelecteDestinations(tripData)});
+              .then((tripData) => {
+                console.log("trip destinations",tripData);
+                setSelecteDestinations(tripData)});
           }; 
     
 
