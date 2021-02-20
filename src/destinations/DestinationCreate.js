@@ -2,11 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import Entry from './DestinationEntry'
 
 const DestinationCreate = (props) => {
-  console.log("props from create", props);
   const [possibleDestinations, setPossibleDestinations] = useState([]) 
   const [filteredDest, setFilteredDest] = useState([])
   const displayedNum = 6;
-  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     manageDestinations()
@@ -52,10 +50,14 @@ const DestinationCreate = (props) => {
         let count = 0
         while(filteredDest.length > count  && resArray.length < displayedNum){
           let res = await validateDestination(filteredDest[count])
-          if (res){ 
+          if (res){
+            let wikidataArray=resArray.map((i)=>i.wikidata)
+            if(!wikidataArray.includes(res.wikidata)) {
             resArray.push(res)
+            }
           }
           count++
+
         }
         setPossibleDestinations(resArray)
       }
@@ -72,6 +74,7 @@ const DestinationCreate = (props) => {
               continue
           } else {
             let json = await res.json()
+            console.log("json",json);
             let img = "";
             let text = "";
             if (json.preview) {
@@ -84,10 +87,11 @@ const DestinationCreate = (props) => {
                 text = json.wikipedia_extracts.text;
               }
             }
+            console.log("checkDest",checkDest)
             if (img != "" && text != "") {
               return { "name": json.name, "image": img, "descr": text, "wikidata": json.wikidata }
             }
-            return {}
+            return 
           }
         }
     }

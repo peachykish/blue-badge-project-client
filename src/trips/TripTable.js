@@ -3,10 +3,14 @@ import {Table, Button} from 'reactstrap';
 
 const TripTable=(props)=>{
 
-    
-
+  console.log(props)
+    if(props.trips.error){
+        if(props.trips.error.name=="TokenExpiredError"){
+            localStorage.clear();
+            console.log("expired")
+        }
+    }
   
-    console.log("triptable props",props);
     
     const deleteTrip=(trip)=>{
         fetch(`http://localhost:3000/trip/${trip.id}`,{
