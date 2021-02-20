@@ -5,7 +5,6 @@ const DestinationCreate = (props) => {
   const [possibleDestinations, setPossibleDestinations] = useState([]) 
   const [filteredDest, setFilteredDest] = useState([])
   const displayedNum = 6;
-
   useEffect(() => {
     manageDestinations()
   }, [props.trip]);
@@ -20,7 +19,7 @@ const DestinationCreate = (props) => {
     <div key={props.trip.id}>
       This is where you'll pick some destinations.
       {possibleDestinations.map((entry) => (
-        entry && <Entry item={entry} />
+        entry && <Entry trip_id={props.trip.id} token={props.token} item={entry}/>
       ))}
     </div>
   );
@@ -33,7 +32,6 @@ const DestinationCreate = (props) => {
 
   function manageDestinations() {
     const limit = 7;
-    console.log("trip", props.trip)
     fetch(
       `https://api.opentripmap.com/0.1/en/places/radius?radius=100000&lon=${props.trip.lon}&lat=${props.trip.lat}&apikey=${props.api_key}`
     )
@@ -74,7 +72,6 @@ const DestinationCreate = (props) => {
               continue
           } else {
             let json = await res.json()
-            console.log("json",json);
             let img = "";
             let text = "";
             if (json.preview) {
@@ -87,7 +84,6 @@ const DestinationCreate = (props) => {
                 text = json.wikipedia_extracts.text;
               }
             }
-            console.log("checkDest",checkDest)
             if (img != "" && text != "") {
               return { "name": json.name, "image": img, "descr": text, "wikidata": json.wikidata }
             }

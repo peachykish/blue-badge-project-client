@@ -36,7 +36,7 @@ const DestinationIndex=(props)=>{
           
         </Col>
         <Col md="6">
-          <DestinationCreate api_key={props.api_key} trip={props.tripForDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
+          <DestinationCreate token={props.token} api_key={props.api_key} trip={props.tripForDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
         </Col>
       </Row>
         </Container>
