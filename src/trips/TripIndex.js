@@ -11,7 +11,6 @@ const TripIndex = (props) => {
     const [trips, setTrips] = useState([]);
     const editUpdateTrip = (trip) => {
         setTripToUpdate(trip);
-        console.log(trip);
       };
     
       const updateOn = () => {

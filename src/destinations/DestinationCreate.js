@@ -14,15 +14,6 @@ const DestinationCreate = (props) => {
       displayDestinations()
     }
   }, [filteredDest])
-
-  return (
-    <div key={props.trip.id}>
-      This is where you'll pick some destinations.
-      {possibleDestinations.map((entry) => (
-        entry && <Entry trip_id={props.trip.id} token={props.token} item={entry}/>
-      ))}
-    </div>
-  );
   
   function getValidPlaces(unfiltered_places){
     if ( unfiltered_places){
@@ -91,6 +82,15 @@ const DestinationCreate = (props) => {
           }
         }
     }
+
+    return (
+      <div key={props.trip.id}>
+        This is where you'll pick some destinations.
+        {possibleDestinations.map((entry) => (
+          entry && <Entry trip_id={props.trip.id} token={props.token} item={entry}/>
+        ))}
+      </div>
+    );
 };
 
 export default DestinationCreate;

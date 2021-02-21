@@ -14,7 +14,6 @@ const TripEdit=(props)=>{
         fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${editPlace}&apikey=${api_key}`)
         .then(response=>response.json())
         .then(data=>{
-            console.log('Is this real data', data);
             setLat(data.lat);
             setLon(data.lon);
             return [data.lat,data.lon]
@@ -34,10 +33,9 @@ const TripEdit=(props)=>{
             })
         })
         .then(res=> res.json())
-        .then((editTripData) => {
+        .then(() => {
             props.fetchTrips();
             props.updateOff();
-            console.log(editTripData);
         });
     }
 
