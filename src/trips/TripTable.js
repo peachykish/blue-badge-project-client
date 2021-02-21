@@ -29,7 +29,7 @@ const TripTable=(props)=>{
     
     const tripMapper=()=>{
         
-        return props.trips.entries.map((trip,index)=>{
+        return props.trips.entries?.map((trip,index)=>{
             return(
                 <tr key={index}>
                     <th scope="row">{trip.id}</th>
@@ -61,7 +61,7 @@ const TripTable=(props)=>{
                 </tr>
             </thead>
             <tbody>
-                {props.trips.entries.length==0?useEffect:tripMapper()}
+                {props.trips.entries&&props.trips.entries.length==0?useEffect:tripMapper()}
                 {/* I had to tweak this ^^^ to get it to work! */}
             </tbody>
         </Table>
