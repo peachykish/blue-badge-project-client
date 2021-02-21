@@ -4,7 +4,6 @@ import DestinationIndex from "../destinations/DestinationIndex";
 import TripIndex from '../trips/TripIndex'
 
 const Home = (props) => {
-  console.log(props);
   const [tripForDestinations, setTripForDestinations] = useState();
 
  return (

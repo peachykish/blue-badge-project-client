@@ -5,38 +5,48 @@ import DestinationCreate from './DestinationCreate';
 
 
 const DestinationIndex=(props)=>{
+
     console.log("destination props",props);
     const [selectedDestinations,setSelecteDestinations]=useState([]);
     
-    const fetchSelectedDestinations=()=>{
-            fetch("http://localhost:3000/destination", {
+    async function fetchSelectedDestinations(){
+            let res = await fetch("http://localhost:3000/destination", {
               method: "GET",
-             // body:JSON.stringify({destination:{trip_id:props.trip.id}}),
+              //body:JSON.stringify({destination:{trip_id:props.trip_id}}),
               headers: new Headers({
                'Content-Type': 'application/json',
                 'Authorization': props.token,       
               }),
             })
-              .then((res) => res.json())
-              .then((tripData) => {
-                console.log("trip destinations",tripData);
-                setSelecteDestinations(tripData)});
+              res = await res.json()
+              let newArr= await tripDestinations(res.entries)
+                console.log("newArr",newArr);
+                console.log(res);
+              let nothing= await  setSelecteDestinations(newArr);
+              console.log("nothing",nothing);
+              console.log("sd",selectedDestinations);
+                
           }; 
-    
+    async function tripDestinations(arr){
+      return arr.filter((item)=>item.trip_id==props.tripForDestinations.id)
+    }
+
 
     return (
         <Container>
           <Row>
-        <Col md="6">
+        <Col md="5">
             <DestinationTable
               token={props.token}
               trip={props.tripForDestinations}
+              selectedDestinations={selectedDestinations}
               fetchSelectedDestinations={fetchSelectedDestinations}
             />
           
         </Col>
-        <Col md="6">
-          <DestinationCreate token={props.token} api_key={props.api_key} trip={props.tripForDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
+        <Col md="2"/>
+        <Col md="5">
+          <DestinationCreate token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
         </Col>
       </Row>
         </Container>

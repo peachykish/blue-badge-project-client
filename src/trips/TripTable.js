@@ -3,7 +3,6 @@ import {Table, Button} from 'reactstrap';
 
 const TripTable=(props)=>{
 
-  console.log(props)
     if(props.trips.error){
         if(props.trips.error.name=="TokenExpiredError"){
             localStorage.clear();

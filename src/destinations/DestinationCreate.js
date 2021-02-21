@@ -11,7 +11,7 @@ const DestinationCreate = (props) => {
 
   useEffect(() => {
     if (filteredDest){
-      displayDestinations()
+      displayPossibleDestinations()
     }
   }, [filteredDest])
 
@@ -19,7 +19,7 @@ const DestinationCreate = (props) => {
     <div key={props.trip.id}>
       This is where you'll pick some destinations.
       {possibleDestinations.map((entry) => (
-        entry && <Entry trip_id={props.trip.id} token={props.token} item={entry}/>
+        entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations}/>
       ))}
     </div>
   );
@@ -43,7 +43,7 @@ const DestinationCreate = (props) => {
       })
     }
 
-  async function displayDestinations(){
+  async function displayPossibleDestinations(){
         let resArray = []
         let count = 0
         while(filteredDest.length > count  && resArray.length < displayedNum){
