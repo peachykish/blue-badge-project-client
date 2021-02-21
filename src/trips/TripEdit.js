@@ -9,7 +9,7 @@ const TripEdit=(props)=>{
 
     const tripUpdate=(event,trip)=>{
         event.preventDefault();
-        fetch(`http://localhost:3000/trip/update/${props.tripToUpdate.id}`,{
+        fetch(`http://localhost:3000/trip/${props.tripToUpdate.id}`,{
             method:"PUT",
             body:JSON.stringify({trip:{description : editDesc, place: editPlace}}),
             headers: new Headers ({

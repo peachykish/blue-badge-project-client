@@ -1,8 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import {Table, Button} from 'reactstrap';
 
 const TripTable=(props)=>{
-    console.log("triptable props",props);
+
+  console.log(props)
+    if(props.trips.error){
+        if(props.trips.error.name=="TokenExpiredError"){
+            localStorage.clear();
+            console.log("expired")
+        }
+    }
+  
+    
     const deleteTrip=(trip)=>{
         fetch(`http://localhost:3000/trip/${trip.id}`,{
             method:'DELETE',
@@ -15,14 +24,9 @@ const TripTable=(props)=>{
             console.log("delete");
             props.fetchTrips()
         })
-    }
-    const addDestinations=(trip)=>{
-        // console.log("props from add", props);
-        console.log("trip",trip)
-        props.setTripForDestinations(trip)
-        console.log(props.tripForDestinations);
-    }
+    }   
 
+    
     
     const tripMapper=()=>{
         
@@ -35,7 +39,7 @@ const TripTable=(props)=>{
                     <td>
                         <Button color ="warning" onClick={()=>{props.editUpdateTrip(trip);props.updateOn()}}>Update</Button>
                         <Button color ="danger" onClick={()=>deleteTrip(trip)}>Delete</Button>
-                        <Button color ="normal" onClick={()=>addDestinations(trip)}>Add destinations</Button>
+                        <Button color ="normal" onClick={()=>props.setTripForDestinations(trip)}>Manage destinations</Button>
                     </td>
 
                 </tr>
