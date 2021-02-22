@@ -1,28 +1,47 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import {Button} from "reactstrap"
 import Entry from './DestinationEntry'
 
 const DestinationCreate = (props) => {
+  let activeButton="all";
+  let count = 0
   const [possibleDestinations, setPossibleDestinations] = useState([]) 
   const [filteredDest, setFilteredDest] = useState([])
-  const displayedNum = 6;
+  const [kinds,setKinds]=useState('foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places')
+  
   useEffect(() => {
     manageDestinations()
-  }, [props.trip]);
+  }, [props.trip,kinds]);
 
   useEffect(() => {
     if (filteredDest){
-      displayDestinations()
+      displayPossibleDestinations()
     }
   }, [filteredDest])
 
+  useEffect(()=>displayPossibleDestinations(),[props.displayedNum])
+ 
   return (
     <div key={props.trip.id}>
-      This is where you'll pick some destinations.
+      <Button onClick={()=>setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places")}>All</Button>
+      <Button onClick={()=>setCategories("foods")}>Food</Button>
+      <Button onClick={()=>setCategories("amusements")}>Amusements</Button>
+      <Button onClick={()=>setCategories("shops")}>Shopping</Button>
+      <Button onClick={()=>setCategories("sport")}>Sports</Button>
+      <Button onClick={()=>setCategories("accomodations")}>Accomodations</Button>
+      <Button onClick={()=>setCategories("interesting_places")}>Interesting Places</Button>
+      
       {possibleDestinations.map((entry) => (
-        entry && <Entry trip_id={props.trip.id} token={props.token} item={entry}/>
+        entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations}/>
       ))}
+      {count<possibleDestinations.length&&<button onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</button>}
     </div>
   );
+  function setCategories(cats){
+    count=0;
+    props.setDisplayedNum(6)
+    setKinds(cats);
+  }
   
   function getValidPlaces(unfiltered_places){
     if ( unfiltered_places){
@@ -31,9 +50,8 @@ const DestinationCreate = (props) => {
   }
 
   function manageDestinations() {
-    const limit = 7;
     fetch(
-      `https://api.opentripmap.com/0.1/en/places/radius?radius=100000&lon=${props.trip.lon}&lat=${props.trip.lat}&apikey=${props.api_key}`
+      `https://api.opentripmap.com/0.1/en/places/radius?radius=100000&kinds=${kinds}&lon=${props.trip.lon}&lat=${props.trip.lat}&apikey=${props.api_key}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -43,10 +61,9 @@ const DestinationCreate = (props) => {
       })
     }
 
-  async function displayDestinations(){
+  async function displayPossibleDestinations(){
         let resArray = []
-        let count = 0
-        while(filteredDest.length > count  && resArray.length < displayedNum){
+        while(filteredDest.length > count  && resArray.length < props.displayedNum){
           let res = await validateDestination(filteredDest[count])
           if (res){
             let wikidataArray=resArray.map((i)=>i.wikidata)
