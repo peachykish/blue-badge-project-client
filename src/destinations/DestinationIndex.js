@@ -23,8 +23,8 @@ const DestinationIndex=(props)=>{
                 console.log("newArr",newArr);
                 console.log(res);
               let nothing= await  setSelecteDestinations(newArr);
-              console.log("nothing",nothing);
-              console.log("sd",selectedDestinations);
+              //console.log("nothing",nothing);
+              //console.log("sd",selectedDestinations);
                 
           }; 
     async function tripDestinations(arr){
@@ -46,7 +46,7 @@ const DestinationIndex=(props)=>{
         </Col>
         <Col md="2"/>
         <Col md="5">
-          <DestinationCreate token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
+          <DestinationCreate displayedNum={props.displayedNum} setDisplayedNum={props.setDisplayedNum} token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
         </Col>
       </Row>
         </Container>

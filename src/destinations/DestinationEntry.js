@@ -1,6 +1,8 @@
-import { Button } from "reactstrap";
+import {useState} from 'react';
+import { Button,Modal,ModalBody,ModalHeader } from "reactstrap";
 function Entry(props) {
-
+    const [modal,setModal]=useState(false);
+    
   async function selectDestination(item) {
     await fetch("http://localhost:3000/destination", {
       method: "POST",
@@ -20,15 +22,21 @@ function Entry(props) {
     })
     await props.fetchSelectedDestinations();
   }
-
+  const toggle=()=>setModal(!modal)
   return (
     <div key={props.item.wikidata}>
       <h1>{props.item.name}</h1>
       <img src={props.item.image} />
-      <p>{props.item.descr}</p>
       <Button onClick={() => selectDestination(props.item)}>
         Click to add
       </Button>
+      <Button color="info" onClick={toggle}>?</Button>
+      <Modal isOpen={modal} toggle={toggle}>
+            <ModalHeader toggle={toggle}>{props.item.name}</ModalHeader>
+            <ModalBody>
+                {props.item.descr}
+            </ModalBody>
+        </Modal>
     </div>
   );
 }

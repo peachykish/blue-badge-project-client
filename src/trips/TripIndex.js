@@ -53,6 +53,7 @@ const TripIndex = (props) => {
           trips={trips}
           setTripForDestinations={props.setTripForDestinations}
           tripForDestinations={props.tripForDestinations}
+          setDisplayedNum={props.setDisplayedNum}
           editUpdateTrip={editUpdateTrip}
           updateOn={updateOn}
           token={props.token}

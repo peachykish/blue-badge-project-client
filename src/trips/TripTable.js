@@ -38,7 +38,10 @@ const TripTable=(props)=>{
                     <td>
                         <Button color ="warning" onClick={()=>{props.editUpdateTrip(trip);props.updateOn()}}>Update</Button>
                         <Button color ="danger" onClick={()=>deleteTrip(trip)}>Delete</Button>
-                        <Button color ="normal" onClick={()=>props.setTripForDestinations(trip)}>Manage destinations</Button>
+                        <Button color ="normal" onClick={()=>{
+                            props.setTripForDestinations(trip);
+                            props.setDisplayedNum(6);
+                            }}>Manage destinations</Button>
                     </td>
 
                 </tr>

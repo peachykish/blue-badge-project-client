@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {Button,Label,Form,FormGroup, Input, Modal, ModalBody, ModalHeader} from 'reactstrap'
 
 const TripEdit=(props)=>{
+    console.log('Edit Props', props);
     const [editDesc,setEditDesc]=useState(props.tripToUpdate.description)
     const [editPlace,setEditPlace]=useState(props.tripToUpdate.place)
 
@@ -10,7 +11,7 @@ const TripEdit=(props)=>{
         event.preventDefault();
         fetch(`http://localhost:3000/trip/${props.tripToUpdate.id}`,{
             method:"PUT",
-            body:JSON.stringify({log:{description:editDesc,place:editPlace}}),
+            body:JSON.stringify({trip:{description : editDesc, place: editPlace}}),
             headers: new Headers ({
                 'Content-Type':'application/json',
                 'Authorization':props.token
