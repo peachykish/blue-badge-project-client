@@ -12,7 +12,6 @@ const TripCreate=(props)=>{
         fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${place}&apikey=${props.api_key}`)
         .then(response=>response.json())
         .then(data=>{
-            console.log(data);
             setLat(data.lat);
             setLon(data.lon);
             return [data.lat,data.lon]

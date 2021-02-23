@@ -8,25 +8,40 @@ import "./Auth.css"
 
 const Auth = (props)=>{
     return(
-        <Container className = "auth-container">
+        <Container fluid>
             <Row>
-                <Col md="12">
+            <Col id="sideBoxTop" md="2">
+            </Col>
+                <Col md="10">
             <h1>Welcome to Travel App!</h1>
             </Col>
                 </Row>
                 <br/>
                 <Row>
-                <Col md="6">
+                <Col id="sideBox" md="2">
+                    
+                </Col>
+                <Col md="4">
                     
                     <Signup updateToken={props.updateToken}/>
                 </Col>
-                <Col md="6">
+                <Col md="2">
                     
                     <Login updateToken={props.updateToken}/>
                 </Col>
+                <Col md="4">
+                    
+                   
+                </Col>
                 
             </Row>
+            <Row>
+                <Col id="filler" md="12">
+                Travel App &copy; Group 5
+                </Col>
+            </Row>
         </Container>
+        
     )
 }
 
