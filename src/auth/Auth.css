@@ -65,3 +65,18 @@ h2{
     /* background-color: rgb(255, 255, 255); */
     background-color: transparent;
   }
+
+  #sideBox{
+    background-color: #303428;
+    color: white;
+  }
+
+  /* logo */
+  #sideBoxTop{
+    background-image:url("../auth/appLogo.png") ;
+    color: white;
+    height: 190px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

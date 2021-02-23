@@ -10,17 +10,23 @@ const Auth = (props)=>{
     return(
         <Container className = "auth-container">
             <Row>
-                <Col md="12">
+            <Col id="sideBoxTop" md="2">
+            </Col>
+                <Col md="10">
             <h1>Welcome to Travel App!</h1>
             </Col>
                 </Row>
                 <br/>
                 <Row>
-                <Col md="6">
+                <Col id="sideBox" md="2">
+                    
+                    Side bar
+                </Col>
+                <Col md="5">
                     
                     <Signup updateToken={props.updateToken}/>
                 </Col>
-                <Col md="6">
+                <Col md="5">
                     
                     <Login updateToken={props.updateToken}/>
                 </Col>
