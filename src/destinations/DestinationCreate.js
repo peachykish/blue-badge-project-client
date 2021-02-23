@@ -6,7 +6,6 @@ const DestinationCreate = (props) => {
   let activeButton="all";
   let count = 0
   const [possibleDestinations, setPossibleDestinations] = useState([]) 
-  const [filteredDest, setFilteredDest] = useState([])
   const [kinds,setKinds]=useState('foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places')
   
   useEffect(() => {
@@ -14,10 +13,10 @@ const DestinationCreate = (props) => {
   }, [props.trip,kinds]);
 
   useEffect(() => {
-    if (filteredDest){
+    if (props.filteredDest){
       displayPossibleDestinations()
     }
-  }, [filteredDest])
+  }, [props.filteredDest])
 
   useEffect(()=>displayPossibleDestinations(),[props.displayedNum])
  
@@ -57,14 +56,15 @@ const DestinationCreate = (props) => {
       .then((json) => {
         let places = json.features
         let filtered = getValidPlaces(places)
-        setFilteredDest(filtered)
+        //check these and remove
+        props.setFilteredDest(filtered)
       })
     }
 
   async function displayPossibleDestinations(){
         let resArray = []
-        while(filteredDest.length > count  && resArray.length < props.displayedNum){
-          let res = await validateDestination(filteredDest[count])
+        while(props.filteredDest.length > count  && resArray.length < props.displayedNum){
+          let res = await validateDestination(props.filteredDest[count])
           if (res){
             let wikidataArray=resArray.map((i)=>i.wikidata)
             if(!wikidataArray.includes(res.wikidata)) {

@@ -7,7 +7,9 @@ import DestinationCreate from './DestinationCreate';
 const DestinationIndex=(props)=>{
 
     console.log("destination props",props);
+    //reformat dest to include "isSaved" this line no longer needed VVV
     const [selectedDestinations,setSelecteDestinations]=useState([]);
+    const [filteredDest, setFilteredDest] = useState([])
     
     async function fetchSelectedDestinations(){
             let res = await fetch("http://localhost:3000/destination", {
@@ -23,8 +25,6 @@ const DestinationIndex=(props)=>{
                 console.log("newArr",newArr);
                 console.log(res);
               let nothing= await  setSelecteDestinations(newArr);
-              //console.log("nothing",nothing);
-              //console.log("sd",selectedDestinations);
                 
           }; 
     async function tripDestinations(arr){
@@ -46,7 +46,7 @@ const DestinationIndex=(props)=>{
         </Col>
         <Col md="2"/>
         <Col md="5">
-          <DestinationCreate displayedNum={props.displayedNum} setDisplayedNum={props.setDisplayedNum} token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
+          <DestinationCreate filteredDest={filteredDest} setFilteredDest={setFilteredDest} displayedNum={props.displayedNum} setDisplayedNum={props.setDisplayedNum} token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
         </Col>
       </Row>
         </Container>
