@@ -5,71 +5,50 @@ import DestinationCreate from './DestinationCreate';
 
 
 const DestinationIndex=(props)=>{
+
     console.log("destination props",props);
     const [selectedDestinations,setSelecteDestinations]=useState([]);
-
-    const deleteDestination=(destination)=>{
-        fetch(`http://localhost:3000/destination/${destination.id}`,{
-            method:'DELETE',
-            headers: new Headers({
-                'Content-Type':'application/json',
-                'Authorization':props.token
-            })
-        })
-        .then(()=>{
-            console.log("delete");
-            props.fetchTrips()
-        })
-    }
     
-    
-    
-    const fetchSelectedDestinations=()=>{
-            fetch("http://localhost:3000/destination", {
+    async function fetchSelectedDestinations(){
+            let res = await fetch("http://localhost:3000/destination", {
               method: "GET",
-             // body:JSON.stringify({destination:{trip_id:props.trip.id}}),
+              //body:JSON.stringify({destination:{trip_id:props.trip_id}}),
               headers: new Headers({
                'Content-Type': 'application/json',
                 'Authorization': props.token,       
               }),
             })
-              .then((res) => res.json())
-              .then((tripData) => {console.log("trip destinations",tripData);setSelecteDestinations(tripData)});
+              res = await res.json()
+              let newArr= await tripDestinations(res.entries)
+                console.log("newArr",newArr);
+                console.log(res);
+              let nothing= await  setSelecteDestinations(newArr);
+              //console.log("nothing",nothing);
+              //console.log("sd",selectedDestinations);
+                
           }; 
-    
+    async function tripDestinations(arr){
+      return arr.filter((item)=>item.trip_id==props.tripForDestinations.id)
+    }
 
-    
-    // const tripMapper=()=>{
-        
-    //     return props.trips.entries.map((trip,index)=>{
-    //         return(
-    //             <tr key={index}>
-    //                 <th scope="row">{trip.id}</th>
-    //                 <td>{trip.description}</td>
-    //                 <td>{trip.place}</td>
-    //                 <td>
-    //                     <Button color ="warning" onClick={()=>{props.editUpdateTrip(trip);props.updateOn()}}>Update</Button>
-    //                     <Button color ="danger" onClick={()=>deleteDestination(trip)}>Delete</Button>
-    //                     <Button color ="blue" onClick={()=>addDestinations(trip)}>Add destinations</Button>
-    //                 </td>
-
-    //             </tr>
-    //         )
-    //     })
-    // }
 
     return (
         <Container>
-            <Row>
-                <Col md="3">
-                    <DestinationCreate token={props.token} fetchSelectedDestinations={fetchSelectedDestinations} api_key={props.api_key} trip={props.trip}/>
-                </Col>
-                <Col md="9">
-                    <DestinationTable trip={props.trip} token={props.token}/>
-                </Col>
-                {/* {updateActive?<TripEdit tripToUpdate={tripToUpdate} updateOff={updateOff} token={props.token} fetchTrips={fetchTrips}/>:<></>} */} 
-            </Row>
-            {/* {tripForDestinations.id==null?<></>:<DestinationIndex api_key={props.api_key} token={props.token} trip={tripForDestinations}/>} */}
+          <Row>
+        <Col md="5">
+            <DestinationTable
+              token={props.token}
+              trip={props.tripForDestinations}
+              selectedDestinations={selectedDestinations}
+              fetchSelectedDestinations={fetchSelectedDestinations}
+            />
+          
+        </Col>
+        <Col md="2"/>
+        <Col md="5">
+          <DestinationCreate displayedNum={props.displayedNum} setDisplayedNum={props.setDisplayedNum} token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
+        </Col>
+      </Row>
         </Container>
         );
 }

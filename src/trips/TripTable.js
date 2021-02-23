@@ -1,8 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import {Table, Button} from 'reactstrap';
 
 const TripTable=(props)=>{
-    console.log("triptable props",props);
+
+    if(props.trips.error){
+        if(props.trips.error.name=="TokenExpiredError"){
+            localStorage.clear();
+            console.log("expired")
+        }
+    }
+  
     
     const deleteTrip=(trip)=>{
         fetch(`http://localhost:3000/trip/${trip.id}`,{
@@ -18,62 +25,11 @@ const TripTable=(props)=>{
         })
     }   
 
-    const addDestinations=(trip)=>{
-        const limit =7;
-        console.log("props from add", props);
-        console.log("trip",trip)
-        props.setTripForDestinations(trip)
-        console.log(props.tripForDestinations);
-        fetch(
-            `https://api.opentripmap.com/0.1/en/places/radius?radius=100000&lon=${trip.lon}&lat=${trip.lat}&apikey=${props.api_key}`
-          )
-            .then((res) => res.json())
-            .then((json) => {
-              let filtered = json.features;
-              let haveWikidata = [];
-              for (let i = 0; i < filtered.length; i++) {
-                if (filtered[i].properties.wikidata) {
-                  haveWikidata.push(filtered[i]);
-                }
-              }
-              return haveWikidata;
-            })
-            .then((usable) => {
-              //  let count=0;
-              const newArray = [];
-              //for(let i=0;i<usable.length&&count<limit;i++){
-              for (let i = 0; i < usable.length && i < limit; i++) {
-                fetch(
-                  `https://api.opentripmap.com/0.1/en/places/xid/${usable[i].properties.xid}?apikey=${props.api_key}`
-                )
-                  .then((res) => res.json())
-                  .then((json) => {
-                    let img = "";
-                    let text = "";
-                    if (json.preview) {
-                        if(json.preview.source) {
-                          img = json.preview.source;
-                        }
-                    }
-                    if (json.wikipedia_extracts) {
-                        if(json.wikipedia_extracts.text){
-                          text = json.wikipedia_extracts.text;
-                        }
-                    }
-                    //console.log({'preview':json.preview,"preview.source":json.preview.source,"wiki extracts":json.wikipedia_extracts,"wiki extracts.text":json.wikipedia_extracts.text})
-                    //if(img!==""&&text!==""){count++};
-                    newArray.push({ name: json.name, image: img, descr: text });
-                    props.setPossibleDestinations(newArray);
-                  });
-              }
-            }
-            )
-        }
-
+    
     
     const tripMapper=()=>{
         
-        return props.trips.entries.map((trip,index)=>{
+        return props.trips.entries?.map((trip,index)=>{
             return(
                 <tr key={index}>
                     <th scope="row">{trip.id}</th>
@@ -82,7 +38,10 @@ const TripTable=(props)=>{
                     <td>
                         <Button color ="warning" onClick={()=>{props.editUpdateTrip(trip);props.updateOn()}}>Update</Button>
                         <Button color ="danger" onClick={()=>deleteTrip(trip)}>Delete</Button>
-                        <Button color ="normal" onClick={()=>addDestinations(trip)}>Manage destinations</Button>
+                        <Button color ="normal" onClick={()=>{
+                            props.setTripForDestinations(trip);
+                            props.setDisplayedNum(6);
+                            }}>Manage destinations</Button>
                     </td>
 
                 </tr>
@@ -105,7 +64,7 @@ const TripTable=(props)=>{
                 </tr>
             </thead>
             <tbody>
-                {props.trips.entries.length==0?useEffect:tripMapper()}
+                {props.trips.entries&&props.trips.entries.length==0?useEffect:tripMapper()}
                 {/* I had to tweak this ^^^ to get it to work! */}
             </tbody>
         </Table>
