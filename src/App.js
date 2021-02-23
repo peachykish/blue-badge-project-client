@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import Sitebar from './home/Navbar';
 import Auth from './auth/Auth'
-import TripIndex from './trips/TripIndex'
+import Home from './home/Home'
 
 function App() {
   const [sessionToken,setSessionToken]=useState('');
@@ -25,12 +25,14 @@ function App() {
   }
 
   const protectedViews=()=>{
-    return (sessionToken===localStorage.getItem('token')?<TripIndex token={sessionToken} api_key={api_key}/>:<Auth updateToken={updateToken}/>)
+    return (sessionToken===localStorage.getItem('token')?<Home token={sessionToken} api_key={api_key}/>:<Auth updateToken={updateToken}/>)
   }
   return (
     <div >
+     
       <Sitebar clickLogout={clearToken}/>
       {protectedViews()}
+     {/* <Footer /> */}
     </div>
   );
 }

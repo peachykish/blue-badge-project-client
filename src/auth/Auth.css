@@ -1,0 +1,100 @@
+body {
+    background-image:url("../auth/origback.jpg");
+    background-size: cover;
+    margin: 40px;
+    color:#252532;
+}
+
+html {
+    height: 100%;
+  }
+
+#suBtn{
+    background-color:#252532;
+    margin-bottom:20px;
+}
+
+/* username/password */
+#suLabel{
+    font-size: 25px;
+    font-weight: 500;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    /* font-family: 'Reggae One', cursive; */
+    font-family: 'Shadows Into Light', cursive;
+}
+
+/* Welcome to travel app */
+h1{
+    font-size: 60px;
+    color: #373843;
+    text-shadow: 5px 5px #567799;
+     -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    /* font-family:sans-serif; */
+    /* font-family: 'Reggae One', cursive; */
+    /* font-family: 'Fredoka One', cursive; */
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 2px;
+    padding: 20px;
+    text-align: center;
+
+}
+
+
+/* Signup/login */
+h2{
+    font-size: 40px;
+    text-decoration: underline;
+    color: #373843;
+    /* text-shadow: 2px 2px #252532; */
+     -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #373843;
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family: 'Amatic SC', cursive;
+    letter-spacing: 2px;
+}
+
+.siglog{
+    font-size: 35px;
+}
+
+/* input-box */
+#textBox {
+    border-bottom: 5px solid #252532;
+    border-top: 5px solid #252532;
+    border-left: 5px solid #252532;
+    border-right: 5px solid #252532;
+    height: 40px;
+    width: 250px;
+    transform: skew(20deg);
+    /* background-color: rgb(255, 255, 255); */
+    background-color: transparent;
+  }
+
+  #sideBox{
+    background-color: #303428;
+    color: white;
+    margin-right: 20px;
+    margin-top: -220px;
+  }
+
+  /* logo */
+  #sideBoxTop{
+    background-image:url("../auth/appLogo.png") ;
+    height: 190px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    z-index: 1;
+  }
+
+  /* "footer" */
+  #filler{
+    background-color: #303428;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    height: 35px;
+    margin:0px 10px 0px 0px;
+   
+  }
