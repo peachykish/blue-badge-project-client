@@ -29,8 +29,10 @@ function App() {
   }
   return (
     <div >
+     
       <Sitebar clickLogout={clearToken}/>
       {protectedViews()}
+     {/* <Footer /> */}
     </div>
   );
 }
