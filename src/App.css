@@ -37,3 +37,35 @@
   }
 }
 
+.sidebar{
+  display:flex;
+  background-color: red;
+  margin-top: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#sideBox{
+  background-color: #303428;
+  color: white;
+}
+
+.sidebar-list-styling{
+  padding-left: 50px;
+  padding-top: 15px;
+  width: 20%;
+  background-color: #ee0505;
+  color: white;
+}
+
+.sidebar-list a{
+  color: white;
+  padding: 0;
+}
+
+.sidebar-route{ 
+  flex: 1;
+  padding: '00px'; 
+}
