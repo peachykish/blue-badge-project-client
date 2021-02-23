@@ -8,7 +8,7 @@ import "./Auth.css"
 
 const Auth = (props)=>{
     return(
-        <Container className = "auth-container">
+        <Container fluid>
             <Row>
             <Col id="sideBoxTop" md="2">
             </Col>
@@ -20,19 +20,28 @@ const Auth = (props)=>{
                 <Row>
                 <Col id="sideBox" md="2">
                     
-                    Side bar
                 </Col>
-                <Col md="5">
+                <Col md="4">
                     
                     <Signup updateToken={props.updateToken}/>
                 </Col>
-                <Col md="5">
+                <Col md="2">
                     
                     <Login updateToken={props.updateToken}/>
                 </Col>
+                <Col md="4">
+                    
+                   
+                </Col>
                 
             </Row>
+            <Row>
+                <Col id="filler" md="12">
+                Travel App &copy; Group 5
+                </Col>
+            </Row>
         </Container>
+        
     )
 }
 
