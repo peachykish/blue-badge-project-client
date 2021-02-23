@@ -3,7 +3,6 @@ import {Table, Button} from 'reactstrap';
 
 const TripTable=(props)=>{
 
-  console.log(props)
     if(props.trips.error){
         if(props.trips.error.name=="TokenExpiredError"){
             localStorage.clear();
@@ -30,7 +29,7 @@ const TripTable=(props)=>{
     
     const tripMapper=()=>{
         
-        return props.trips.entries.map((trip,index)=>{
+        return props.trips.entries?.map((trip,index)=>{
             return(
                 <tr key={index}>
                     <th scope="row">{trip.id}</th>
@@ -39,7 +38,10 @@ const TripTable=(props)=>{
                     <td>
                         <Button color ="warning" onClick={()=>{props.editUpdateTrip(trip);props.updateOn()}}>Update</Button>
                         <Button color ="danger" onClick={()=>deleteTrip(trip)}>Delete</Button>
-                        <Button color ="normal" onClick={()=>props.setTripForDestinations(trip)}>Manage destinations</Button>
+                        <Button color ="normal" onClick={()=>{
+                            props.setTripForDestinations(trip);
+                            props.setDisplayedNum(6);
+                            }}>Manage destinations</Button>
                     </td>
 
                 </tr>
@@ -62,7 +64,7 @@ const TripTable=(props)=>{
                 </tr>
             </thead>
             <tbody>
-                {props.trips.entries.length==0?useEffect:tripMapper()}
+                {props.trips.entries&&props.trips.entries.length==0?useEffect:tripMapper()}
                 {/* I had to tweak this ^^^ to get it to work! */}
             </tbody>
         </Table>
