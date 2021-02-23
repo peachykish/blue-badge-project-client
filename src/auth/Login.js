@@ -33,7 +33,6 @@ const Login = (props)=>{
                 </FormGroup>
                 <Button id="suBtn" type="submit">Login</Button>
             </Form>
-
         </div>
     )
 }
