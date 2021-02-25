@@ -13,7 +13,7 @@ const Auth = (props)=>{
             <Col id="sideBoxTop" md="2">
             </Col>
                 <Col md="10">
-            <h1>Welcome to Travel App!</h1>
+            <h1 id="welcome">Welcome to Travel App!</h1>
             </Col>
                 </Row>
                 <br/>
@@ -22,7 +22,7 @@ const Auth = (props)=>{
                     
                 </Col>
                 <Col md="4">
-                    
+                
                     <Signup updateToken={props.updateToken}/>
                 </Col>
                 <Col md="2">
@@ -35,11 +35,7 @@ const Auth = (props)=>{
                 </Col>
                 
             </Row>
-            <Row>
-                <Col id="filler" md="12">
-                Travel App &copy; Group 5
-                </Col>
-            </Row>
+            
         </Container>
         
     )

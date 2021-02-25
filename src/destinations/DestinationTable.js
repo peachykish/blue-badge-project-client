@@ -1,5 +1,7 @@
 import {useEffect} from 'react'
 import {Table,Button} from 'reactstrap'
+import "./Destinations.css"
+
 const DestinationTable=(props)=>{
     console.log("dt props",props)
     useEffect(()=>props.fetchSelectedDestinations(),[props.trip])
@@ -26,7 +28,7 @@ const DestinationTable=(props)=>{
                     <h1 >{destination.name}</h1>
                     <img src={destination.image} alt={destination.name}/>
                     <p>{destination.descr}</p>
-                     <Button color ="danger" onClick={()=>deleteDestination(destination)}>Delete</Button>
+                     <Button id="removeIt" onClick={()=>deleteDestination(destination)}>Remove</Button>
                  </div>
              )
          })

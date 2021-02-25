@@ -1,8 +1,11 @@
 body {
-    background-image:url("../auth/origback.jpg");
+    background-image:url('../auth/origback.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
     margin: 40px;
     color:#252532;
+    height: 100%;
+    background-attachment: fixed;
 }
 
 html {
@@ -25,7 +28,7 @@ html {
 
 /* Welcome to travel app */
 h1{
-    font-size: 60px;
+    font-size: 100px;
     color: #373843;
     text-shadow: 5px 5px #567799;
      -webkit-text-stroke-width: 1px;
@@ -35,11 +38,13 @@ h1{
     /* font-family: 'Fredoka One', cursive; */
     font-family: 'Permanent Marker', cursive;
     letter-spacing: 2px;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
-
 }
 
+#welcome{
+  font-size: 75px;
+}
 
 /* Signup/login */
 h2{
