@@ -1,8 +1,10 @@
 #foot{
-    background-color: #303428;
-    color: white;
-    font-size: 15px;
-    text-align: center;
-    height: 30px;
-    margin:35px 0px 5px 0px;
+  margin-top: 5px;
+  background-color:#303428;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
 }

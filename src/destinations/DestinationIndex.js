@@ -4,6 +4,7 @@ import DestinationTable from './DestinationTable';
 import DestinationCreate from './DestinationCreate';
 
 
+
 const DestinationIndex=(props)=>{
 
     console.log("destination props",props);
@@ -53,6 +54,7 @@ const DestinationIndex=(props)=>{
         </Col>
       </Row>
         </Container>
+
         );
 }
 
