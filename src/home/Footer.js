@@ -6,10 +6,8 @@ import "./Footer.css"
 //Displaying Eleven Fifty copyright//
 const Footer = () => {
     return (
-        <footer>
-        
-        <p id="foot">Travel App&copy; Group 5</p>
-        
+        <footer id="foot">
+        <p>Travel App&copy; Group 5</p>
         </footer>
         );
     };

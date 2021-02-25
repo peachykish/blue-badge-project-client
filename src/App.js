@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import Sitebar from './home/Navbar';
 import Auth from './auth/Auth'
 import Home from './home/Home'
+import Footer from './home/Footer'
 
 function App() {
   const [sessionToken,setSessionToken]=useState('');
@@ -32,8 +33,9 @@ function App() {
      
       <Sitebar clickLogout={clearToken}/>
       {protectedViews()}
-     {/* <Footer /> */}
+      <Footer />
     </div>
+   
   );
 }
 
