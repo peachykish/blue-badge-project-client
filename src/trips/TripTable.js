@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useEffect } from 'react';
+import editIcon from '../assets/edit.png';
 import {
   Col,
   Table,
@@ -18,20 +19,20 @@ const TripTable = (props) => {
       localStorage.clear();
       console.log("expired");
     }
-  }
 
-  const deleteTrip = (trip) => {
-    fetch(`http://localhost:3000/trip/${trip.id}`, {
-      method: "DELETE",
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: props.token,
-      }),
-    }).then(() => {
-      console.log("delete");
-      props.fetchTrips();
-    });
-  };
+    const deleteTrip=(trip)=>{
+        fetch(`http://localhost:3000/trip/${trip.id}`,{
+            method:'DELETE',
+            headers: new Headers({
+                'Content-Type':'application/json',
+                'Authorization':props.token
+            })
+        })
+        .then(()=>{
+            console.log("delete");
+            props.fetchTrips()
+        })
+    }
 
   const tripMapper = () => {
     return props.trips.entries?.map((trip, index) => {
