@@ -9,7 +9,7 @@ const Sitebar=(props)=>{
     // }
 
     return(
-        <Navbar color = "faded" light expand="md">
+        <Navbar color= "faded" light expand="md" >
             <NavbarBrand href="/">TRAVEL APP</NavbarBrand>
             {/* <NavbarToggler onClick={toggle}/> */}
             <NavbarToggler onClick={()=>setIsOpen(!isOpen)}/>

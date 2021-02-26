@@ -4,6 +4,7 @@ import DestinationTable from './DestinationTable';
 import DestinationCreate from './DestinationCreate';
 
 
+
 const DestinationIndex=(props)=>{
 
     console.log("destination props",props);
@@ -12,7 +13,7 @@ const DestinationIndex=(props)=>{
     const [filteredDest, setFilteredDest] = useState([])
     
     async function fetchSelectedDestinations(){
-            let res = await fetch("http://localhost:3000/destination", {
+            let res = await fetch("http://localhost:3000/destination/", {
               method: "GET",
               headers: new Headers({
                'Content-Type': 'application/json',
@@ -20,14 +21,17 @@ const DestinationIndex=(props)=>{
               }),
             })
               res = await res.json()
-              let newArr= await tripDestinations(res.entries)
+              let newArr = await tripDestinations(res.entries)
                 console.log("newArr",newArr);
                 console.log(res);
-              let nothing= await  setSelecteDestinations(newArr);
+      
+              let nothing = await setSelecteDestinations(newArr);
                 
           }; 
     async function tripDestinations(arr){
-      return arr.filter((item)=>item.trip_id==props.tripForDestinations.id)
+      // if (props.tripForDestinations.id == newArr[0].trip_id) {
+        return arr.filter((item)=>item.trip_id==props.tripForDestinations.id)
+      // }
     }
 
 
@@ -49,6 +53,7 @@ const DestinationIndex=(props)=>{
         </Col>
       </Row>
         </Container>
+
         );
 }
 

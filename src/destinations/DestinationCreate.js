@@ -21,13 +21,13 @@ const DestinationCreate = (props) => {
  
   return (
     <div key={props.trip.id}>
-      <Button onClick={()=>setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places")}>All</Button>
-      <Button onClick={()=>setCategories("foods")}>Food</Button>
-      <Button onClick={()=>setCategories("amusements")}>Amusements</Button>
-      <Button onClick={()=>setCategories("shops")}>Shopping</Button>
-      <Button onClick={()=>setCategories("sport")}>Sports</Button>
-      <Button onClick={()=>setCategories("accomodations")}>Accomodations</Button>
-      <Button onClick={()=>setCategories("interesting_places")}>Interesting Places</Button>
+      <Button id="categBtn" onClick={()=>setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places")}>All</Button>
+      <Button id="categBtn" onClick={()=>setCategories("foods")}> Food</Button>
+      <Button id="categBtn" onClick={()=>setCategories("amusements")}>Amusements</Button>
+      <Button id="categBtn" onClick={()=>setCategories("shops")}>Shopping</Button>
+      <Button id="categBtn" onClick={()=>setCategories("sport")}>Sports</Button>
+      <Button id="categBtn" onClick={()=>setCategories("accomodations")}>Accomodations</Button>
+      <Button id="categBtn" onClick={()=>setCategories("interesting_places")}>Interesting Places</Button>
       
       {possibleDestinations.map((entry) => (
         entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations}/>
@@ -57,7 +57,6 @@ const DestinationCreate = (props) => {
         let places = json.features
         console.log(json);
         let filtered = getValidPlaces(places)
-        //check these and remove
         props.setFilteredDest(filtered)
       })
     }

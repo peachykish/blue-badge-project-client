@@ -27,7 +27,7 @@ const Signup = (props)=>{
     return(
         <div>
             {/* <h1>Welcome to Travel App!</h1> */}
-            <h2 className="siglog">Signup</h2>
+            <h2 className="siglog">SIGN UP</h2>
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup>
                     <Label id="suLabel" htmlFor="username">Username</Label>
