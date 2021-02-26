@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {Button,Form,FormGroup,Label,Input} from 'reactstrap'
+import Flippy,{FrontSide,BackSide} from 'react-flippy';
+
 import "./Trips.css"
 
 const TripCreate=(props)=>{
@@ -7,9 +9,12 @@ const TripCreate=(props)=>{
     const [place,setPlace]=useState('');
     const [lat,setLat]=useState(0.00000);
     const [lon,setLon]=useState(0.00000);
+    const [flipped,setFlipped]=useState(false)
 
        const handleSubmit = (e) => {
         e.preventDefault();
+        setFlipped(false);
+        console.log("backclick");
         fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${place}&apikey=${props.api_key}`)
         .then(response=>response.json())
         .then(data=>{
@@ -38,8 +43,27 @@ const TripCreate=(props)=>{
             });
         }
     return(
-        <>
-            <h3>Create a new trip</h3>
+      
+        <Flippy flipOnClick={false} isFlipped={flipped} style={{
+            padding: "15px",
+            height: "300px",
+            width: "300px",
+            textAlign: "left",
+          }}>
+            <FrontSide style={{
+            padding: "15px",
+            height: "300px",
+            width: "300px",
+            textAlign: "left",
+          }} onClick={()=>{setFlipped(true)}}>
+              <i class="fas fa-plus"></i>
+          </FrontSide>
+            <BackSide style={{
+            padding: "15px",
+            height: "300px",
+            width: "300px",
+            textAlign: "left",
+          }}>
             <Form type='submit' onSubmit={handleSubmit}>
             <FormGroup>
                     <Label  htmlFor="place"/>Where to?
@@ -53,9 +77,11 @@ const TripCreate=(props)=>{
                 </FormGroup>
 
                 <Button type="submit">Submit</Button>
+                <Button onClick={()=>setFlipped(false)}>Cancel</Button>
                 </Form>
-
-        </>
+                </BackSide>
+        </Flippy>
+        
     )
 }
 

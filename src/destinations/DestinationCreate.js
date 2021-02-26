@@ -109,14 +109,6 @@ const DestinationCreate = (props) => {
         }
     }
 
-    return (
-      <div key={props.trip.id}>
-        This is where you'll pick some destinations.
-        {possibleDestinations.map((entry) => (
-          entry && <Entry trip_id={props.trip.id} token={props.token} item={entry}/>
-        ))}
-      </div>
-    );
 };
 
 export default DestinationCreate;

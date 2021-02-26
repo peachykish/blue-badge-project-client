@@ -20,7 +20,7 @@ const TripTable = (props) => {
       localStorage.clear();
       console.log("expired");
     }
-
+  }
     const deleteTrip=(trip)=>{
         fetch(`http://localhost:3000/trip/${trip.id}`,{
             method:'DELETE',
@@ -54,8 +54,7 @@ const TripTable = (props) => {
                 <CardTitle>{trip.place}</CardTitle>
               </Col>
               <Col md="2">
-                <img
-                  src={Edit}
+              <i class="fa fa-pencil"
                   style={{ height: "20px" }}
                   onClick={() => {
                     props.editUpdateTrip(trip);
@@ -87,10 +86,7 @@ const TripTable = (props) => {
                 </Button>
               </Col>
               <Col md="2">
-                <img
-                  src={Trash}
-                  style={{ margin: "auto", height: "20px" }}
-                  onClick={() => deleteTrip(trip)}
+              <i class="fa fa-trash-o" style={{ margin: "auto", height: "20px" }} onClick={() => deleteTrip(trip)}
                 />
               </Col>
             </Row>
