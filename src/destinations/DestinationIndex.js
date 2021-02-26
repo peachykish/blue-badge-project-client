@@ -14,7 +14,6 @@ const DestinationIndex=(props)=>{
     async function fetchSelectedDestinations(){
             let res = await fetch("http://localhost:3000/destination", {
               method: "GET",
-              //body:JSON.stringify({destination:{trip_id:props.trip_id}}),
               headers: new Headers({
                'Content-Type': 'application/json',
                 'Authorization': props.token,       

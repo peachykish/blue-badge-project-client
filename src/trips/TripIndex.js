@@ -5,6 +5,7 @@ import TripTable from "../trips/TripTable";
 import TripEdit from "../trips/TripEdit";
 
 
+
 const TripIndex = (props) => {
     const [updateActive, setUpdateActive] = useState(false);
     const [tripToUpdate, setTripToUpdate] = useState({});
@@ -39,6 +40,7 @@ const TripIndex = (props) => {
 
 
   return (
+    <div>
     <Row>
       <Col md="3">
         <TripCreate
@@ -71,6 +73,7 @@ const TripIndex = (props) => {
         <></>
       )}
     </Row>
+    </div>
   );
 };
 export default TripIndex;

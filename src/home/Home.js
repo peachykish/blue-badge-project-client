@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import DestinationIndex from "../destinations/DestinationIndex";
 import TripIndex from '../trips/TripIndex'
-
 const Home = (props) => {
   const [tripForDestinations, setTripForDestinations] = useState();
   const [displayedNum,setDisplayedNum] = useState(6);
