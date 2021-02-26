@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {Button,Label,Form,FormGroup, Input, Modal, ModalBody, ModalHeader} from 'reactstrap'
 
+
 const TripEdit=(props)=>{
     const [editDesc,setEditDesc]=useState(props.tripToUpdate.description)
     const [editPlace,setEditPlace]=useState(props.tripToUpdate.place)
