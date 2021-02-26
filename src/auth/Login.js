@@ -1,13 +1,17 @@
-import React,{useState} from 'react';
-import {Form,FormGroup,Label, Input,Button} from 'reactstrap';
+import {useState} from 'react';
+import {Form,FormGroup,Label, Input,Button, Modal, ModalHeader, ModalBody} from 'reactstrap';
 
 
 const Login = (props)=>{
     const [username,setUsername]=useState('');
     const [password,setPassword]=useState('');
+    const [authenticated, setAuthenticated] = useState(false);
+    const [show, setShow] = useState(true);
+    const handleClose = () => setShow(false);
     
     const handleSubmit=(event)=>{
         event.preventDefault();
+        // console.log('Where is the event', event);
         fetch('http://localhost:3000/user/login',{
             method:'POST',
             body:JSON.stringify({user:{username:username,password:password}}),
@@ -16,11 +20,18 @@ const Login = (props)=>{
             })
         })
         .then((res)=>res.json())
-        .then((data)=>{console.log(data);props.updateToken(data.sessionToken)})
+        .then((data)=>{
+            console.log(data);
+            props.updateToken(data.sessionToken);
+            if (props.sessionToken == undefined) {
+                setAuthenticated(true);
+            }
+        })
     }
+                // alert('No user Found!')});
     return(
         <div>
-            <h2 className="siglog">Login</h2>
+            <h2 className="siglog">LOG IN</h2>
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup>
                     <Label id="suLabel" htmlFor="username">Username</Label>
@@ -31,6 +42,12 @@ const Login = (props)=>{
                     <Input id="textBox" onChange={(e)=>setPassword(e.target.value)} name = "password" value={password}/>
 
                 </FormGroup>
+                {authenticated ? 
+                    <Modal isOpen={true}>
+                        <ModalHeader closeButton>No User Exists</ModalHeader>
+                        <ModalBody>Please Try Again With Valid User</ModalBody>
+                        <Button variant="secondary" onClick={() => setAuthenticated(false)}>Close</Button>
+                    </Modal> : <br/> }
                 <Button id="suBtn" type="submit">Login</Button>
             </Form>
         </div>

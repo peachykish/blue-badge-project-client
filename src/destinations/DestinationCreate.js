@@ -6,34 +6,33 @@ const DestinationCreate = (props) => {
   let activeButton="all";
   let count = 0
   const [possibleDestinations, setPossibleDestinations] = useState([]) 
-  const [filteredDest, setFilteredDest] = useState([])
   const [kinds,setKinds]=useState('foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places')
-  
   useEffect(() => {
     manageDestinations()
   }, [props.trip,kinds]);
 
   useEffect(() => {
-    if (filteredDest){
+    if (props.filteredDest){
       displayPossibleDestinations()
     }
-  }, [filteredDest])
+  }, [props.filteredDest])
 
   useEffect(()=>displayPossibleDestinations(),[props.displayedNum])
  
   return (
     <div key={props.trip.id}>
-      <Button onClick={()=>setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places")}>All</Button>
-      <Button onClick={()=>setCategories("foods")}>Food</Button>
-      <Button onClick={()=>setCategories("amusements")}>Amusements</Button>
-      <Button onClick={()=>setCategories("shops")}>Shopping</Button>
-      <Button onClick={()=>setCategories("sport")}>Sports</Button>
-      <Button onClick={()=>setCategories("accomodations")}>Accomodations</Button>
-      <Button onClick={()=>setCategories("interesting_places")}>Interesting Places</Button>
+      <Button id="categBtn" onClick={()=>setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places")}>All</Button>
+      <Button id="categBtn" onClick={()=>setCategories("foods")}> Food</Button>
+      <Button id="categBtn" onClick={()=>setCategories("amusements")}>Amusements</Button>
+      <Button id="categBtn" onClick={()=>setCategories("shops")}>Shopping</Button>
+      <Button id="categBtn" onClick={()=>setCategories("sport")}>Sports</Button>
+      <Button id="categBtn" onClick={()=>setCategories("accomodations")}>Accomodations</Button>
+      <Button id="categBtn" onClick={()=>setCategories("interesting_places")}>Interesting Places</Button>
       
       {possibleDestinations.map((entry) => (
         entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations}/>
       ))}
+      {/* figure out how to hide this button when no more places to show */}
       {count<possibleDestinations.length&&<button onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</button>}
     </div>
   );
@@ -56,15 +55,16 @@ const DestinationCreate = (props) => {
       .then((res) => res.json())
       .then((json) => {
         let places = json.features
+        console.log(json);
         let filtered = getValidPlaces(places)
-        setFilteredDest(filtered)
+        props.setFilteredDest(filtered)
       })
     }
 
   async function displayPossibleDestinations(){
         let resArray = []
-        while(filteredDest.length > count  && resArray.length < props.displayedNum){
-          let res = await validateDestination(filteredDest[count])
+        while(props.filteredDest.length > count  && resArray.length < props.displayedNum){
+          let res = await validateDestination(props.filteredDest[count])
           if (res){
             let wikidataArray=resArray.map((i)=>i.wikidata)
             if(!wikidataArray.includes(res.wikidata)) {
