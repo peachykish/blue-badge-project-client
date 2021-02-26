@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import {Table, Button} from 'reactstrap';
+import {Table, Button, Card, CardImg, CardTitle, Row, Container} from 'reactstrap';
+import editIcon from '../assets/edit.png';
 
 const TripTable=(props)=>{
 
@@ -31,20 +32,25 @@ const TripTable=(props)=>{
         
         return props.trips.entries?.map((trip,index)=>{
             return(
-                <tr key={index}>
-                    <th scope="row">{trip.id}</th>
-                    <td>{trip.description}</td>
-                    <td>{trip.place}</td>
-                    <td>
+                <Card key={index}>
+                    <Container>
+                    <Row>
+                        <CardTitle>
+                            {trip.place}
+
+                    </CardTitle>
+                    <img src={editIcon}></img>
+                    </Row>
+                    </Container>
                         <Button color ="warning" onClick={()=>{props.editUpdateTrip(trip);props.updateOn()}}>Update</Button>
                         <Button color ="danger" onClick={()=>deleteTrip(trip)}>Delete</Button>
                         <Button color ="normal" onClick={()=>{
                             props.setTripForDestinations(trip);
                             props.setDisplayedNum(6);
                             }}>Manage destinations</Button>
-                    </td>
+                    
 
-                </tr>
+                </Card>
             )
         })
     }
