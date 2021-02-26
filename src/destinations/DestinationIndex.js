@@ -8,13 +8,13 @@ import DestinationCreate from './DestinationCreate';
 const DestinationIndex=(props)=>{
 
     console.log("destination props",props);
+    //reformat dest to include "isSaved" this line no longer needed VVV
     const [selectedDestinations,setSelecteDestinations]=useState([]);
     const [filteredDest, setFilteredDest] = useState([])
     
     async function fetchSelectedDestinations(){
             let res = await fetch("http://localhost:3000/destination/", {
               method: "GET",
-              //body:JSON.stringify({destination:{trip_id:props.trip_id}}),
               headers: new Headers({
                'Content-Type': 'application/json',
                 'Authorization': props.token,       
@@ -24,9 +24,8 @@ const DestinationIndex=(props)=>{
               let newArr = await tripDestinations(res.entries)
                 console.log("newArr",newArr);
                 console.log(res);
+      
               let nothing = await setSelecteDestinations(newArr);
-              console.log("nothing",nothing);
-              console.log("sd",selectedDestinations);
                 
           }; 
     async function tripDestinations(arr){

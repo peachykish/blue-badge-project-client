@@ -6,9 +6,7 @@ const DestinationCreate = (props) => {
   let activeButton="all";
   let count = 0
   const [possibleDestinations, setPossibleDestinations] = useState([]) 
-  // const [filteredDest, setFilteredDest] = useState([])
   const [kinds,setKinds]=useState('foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places')
-  
   useEffect(() => {
     manageDestinations()
   }, [props.trip,kinds]);
@@ -24,16 +22,17 @@ const DestinationCreate = (props) => {
   return (
     <div key={props.trip.id}>
       <Button id="categBtn" onClick={()=>setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places")}>All</Button>
-      <Button id="categBtn" onClick={()=>setCategories("foods")}> Food</Button>
-      <Button id="categBtn" onClick={()=>setCategories("amusements")}>Amusements</Button>
-      <Button id="categBtn" onClick={()=>setCategories("shops")}>Shopping</Button>
-      <Button id="categBtn" onClick={()=>setCategories("sport")}>Sports</Button>
-      <Button id="categBtn" onClick={()=>setCategories("accomodations")}>Accomodations</Button>
-      <Button id="categBtn" onClick={()=>setCategories("interesting_places")}>Interesting Places</Button>
+      <Button id="categBtn" onClick={()=>setCategories("foods")}> <i class="fa fa-cutlery"></i> Food</Button>
+      <Button id="categBtn" onClick={()=>setCategories("amusements")}><i class="fa fa-bicycle"></i> Amusements</Button>
+      <Button id="categBtn" onClick={()=>setCategories("shops")}><i class="fa fa-cart-plus"></i> Shopping</Button>
+      <Button id="categBtn" onClick={()=>setCategories("sport")}><i class="fa fa-futbol-o"></i> Sports</Button>
+      <Button id="categBtn" onClick={()=>setCategories("accomodations")}><i class="fa fa-bed"></i> Accomodations</Button>
+      <Button id="categBtn" onClick={()=>setCategories("interesting_places")}><i class="fa fa-globe"></i> Interesting Places</Button>
       
       {possibleDestinations.map((entry) => (
         entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations}/>
       ))}
+      {/* figure out how to hide this button when no more places to show */}
       {count<possibleDestinations.length&&<button onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</button>}
     </div>
   );
@@ -56,6 +55,7 @@ const DestinationCreate = (props) => {
       .then((res) => res.json())
       .then((json) => {
         let places = json.features
+        console.log(json);
         let filtered = getValidPlaces(places)
         props.setFilteredDest(filtered)
       })
