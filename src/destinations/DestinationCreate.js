@@ -6,9 +6,7 @@ const DestinationCreate = (props) => {
   let activeButton="all";
   let count = 0
   const [possibleDestinations, setPossibleDestinations] = useState([]) 
-  // const [filteredDest, setFilteredDest] = useState([])
   const [kinds,setKinds]=useState('foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places')
-  
   useEffect(() => {
     manageDestinations()
   }, [props.trip,kinds]);
@@ -34,6 +32,7 @@ const DestinationCreate = (props) => {
       {possibleDestinations.map((entry) => (
         entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations}/>
       ))}
+      {/* figure out how to hide this button when no more places to show */}
       {count<possibleDestinations.length&&<button onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</button>}
     </div>
   );
@@ -56,6 +55,7 @@ const DestinationCreate = (props) => {
       .then((res) => res.json())
       .then((json) => {
         let places = json.features
+        console.log(json);
         let filtered = getValidPlaces(places)
         props.setFilteredDest(filtered)
       })
