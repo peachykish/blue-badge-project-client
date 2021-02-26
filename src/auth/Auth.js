@@ -17,16 +17,18 @@ const Auth = (props)=>{
             <h1 id="welcome">Welcome to Travel App!</h1>
             </Col>
                 </Row>
-                <br/>
                 <Row>
                 <Col id="sideBox" md="2">
                     
                 </Col>
                 <Col md="4"></Col>
                 <Col md="4">
-                    <Button onClick={() => setToggle(!toggle)}>First Time Traveler? <br/>  CLICK HERE</Button> 
-                    <br/>
+                   
                     {toggle ? <Signup updateToken={props.updateToken}/> : <Login updateToken={props.updateToken}/>}
+
+                First Time Traveler?<br/>
+                <Button id="clickHere" onClick={() => setToggle(!toggle)}>CLICK HERE</Button> 
+                    <br/>
 
                 </Col>
                 <Col md="4">

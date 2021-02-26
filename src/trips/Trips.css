@@ -1,4 +1,4 @@
-#removeIt{
+ #removeIt{
     border-bottom: 5px solid #252532;
     border-top: 5px solid #252532;
     border-left: 5px solid #252532;
@@ -14,22 +14,28 @@
     color: #38383a;
 }
 
-#categBtn{
-
+#editIt{
     border-bottom: 5px solid #252532;
     border-top: 5px solid #252532;
     border-left: 5px solid #252532;
     border-right: 5px solid #252532;
+    height: 40px;
     transform: skew(20deg);
     background-color: 50% transparent;
     color: white;
-    margin: 2px;
-    font-size: small;
-    margin-bottom: 10px;
 }
-
-#categBtn:hover{
+#editIt:hover{
     background-color:transparent;
     color: #38383a;
-}
+} 
 
+#whereTo{
+    border-bottom: 2px solid #252532;
+    border-top: 2px solid #252532;
+    border-left: 2px solid #252532;
+    border-right: 2px solid #252532;
+    height: 40px;
+    transform: skew(20deg);
+    background-color: 50% transparent;
+    color: white;
+}
