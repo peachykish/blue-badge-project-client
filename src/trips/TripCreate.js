@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {Button,Form,FormGroup,Label,Input} from 'reactstrap'
+import "./Trips.css"
 
 const TripCreate=(props)=>{
     const [description,setDescription]=useState('');
@@ -41,13 +42,13 @@ const TripCreate=(props)=>{
             <h3>Create a new trip</h3>
             <Form type='submit' onSubmit={handleSubmit}>
             <FormGroup>
-                    <Label htmlFor="place"/>Where to?
-                    <Input placeholder="e.g. Seattle" name="place" value={place} onChange={(e)=>setPlace(e.target.value)}/>
+                    <Label  htmlFor="place"/>Where to?
+                    <Input id="whereTo" placeholder="e.g. Seattle" name="place" value={place} onChange={(e)=>setPlace(e.target.value)}/>
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="description"/>
+                    <Label  htmlFor="description"/>
                     What's the reason?
-                    <Input placeholder ="e.g. Spring Break!" name="description" value={description} 
+                    <Input id="whereTo" placeholder ="e.g. Spring Break!" name="description" value={description} 
                     onChange={(e)=>setDescription(e.target.value)}/>
                 </FormGroup>
 

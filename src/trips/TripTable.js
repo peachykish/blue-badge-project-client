@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import {Table, Button} from 'reactstrap';
+import "./Trips.css"
 
 const TripTable=(props)=>{
 
@@ -36,8 +37,8 @@ const TripTable=(props)=>{
                     <td>{trip.description}</td>
                     <td>{trip.place}</td>
                     <td>
-                        <Button color ="warning" onClick={()=>{props.editUpdateTrip(trip);props.updateOn()}}>Update</Button>
-                        <Button color ="danger" onClick={()=>deleteTrip(trip)}>Delete</Button>
+                        <Button id="editIt" color ="warning" onClick={()=>{props.editUpdateTrip(trip);props.updateOn()}}>Update</Button>
+                        <Button id="removeIt" color ="danger" onClick={()=>deleteTrip(trip)}>Delete</Button>
                         <Button color ="normal" onClick={()=>{
                             props.setTripForDestinations(trip);
                             props.setDisplayedNum(6);
