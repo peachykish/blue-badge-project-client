@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { Button,Modal,ModalBody,ModalHeader } from "reactstrap";
+import { Button,Card,Modal,ModalBody,ModalHeader,CardImg,CardTitle, Container } from "reactstrap";
 function Entry(props) {
     const [modal,setModal]=useState(false);
     
@@ -24,10 +24,11 @@ function Entry(props) {
   }
   const toggle=()=>setModal(!modal)
   return (
-    <div key={props.item.wikidata}>
-      <h1>{props.item.name}</h1>
-      <img src={props.item.image} />
-      <Button onClick={() => selectDestination(props.item)}>
+    <Card key={props.item.wikidata} style={{width:'250px', margin:'5px'}}>
+      <Container>
+      <CardTitle>{props.item.name}</CardTitle>
+      <CardImg src={props.item.image} style={{height:'150px', }}/>
+      <Button onClick={() => selectDestination(props.item)} style={{margin:'10px'}}>
         Click to add
       </Button>
       <Button color="info" onClick={toggle}>?</Button>
@@ -37,7 +38,9 @@ function Entry(props) {
                 {props.item.descr}
             </ModalBody>
         </Modal>
-    </div>
+        </Container>
+    </Card>
+   
   );
 }
 export default Entry;
