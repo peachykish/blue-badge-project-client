@@ -11,10 +11,13 @@ import {
   CardTitle,
   CardSubtitle,
 } from "reactstrap";
+import Flippy,{FrontSide,BackSide} from 'react-flippy';
 import Edit from "../assets/edit.png";
 import Trash from "../assets/trash.png";
 
 const TripTable = (props) => {
+  const [flipped,setFlipped]=useState(false)
+
   if (props.trips.error) {
     if (props.trips.error.name == "TokenExpiredError") {
       localStorage.clear();
@@ -39,15 +42,18 @@ const TripTable = (props) => {
     return props.trips.entries?.map((trip, index) => {
       let url = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12270.76212403068!2d${trip.lon}!3d${trip.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1612883072404!5m2!1sen!2sus`;
       return (
-        <Card className="tripCard"
-          key={index}
-          style={{
-            padding: "15px",
-            height: "300px",
-            width: "300px",
-            textAlign: "left",
-          }}
-        >
+        <Flippy flipOnClick={false} isFlipped={flipped} style={{
+          padding: "15px",
+          height: "300px",
+          width: "300px",
+          textAlign: "left",
+        }}>
+          <FrontSide style={{
+          padding: "15px",
+          height: "300px",
+          width: "300px",
+          textAlign: "left",
+        }} onClick={()=>{setFlipped(true)}}>
           <Container>
             <Row>
               <Col md="10">
@@ -55,7 +61,7 @@ const TripTable = (props) => {
               </Col>
               <Col md="2">
               <i class="fa fa-pencil"
-                  style={{ height: "20px" }}
+                  style={{ fontSize: "24px" }}
                   onClick={() => {
                     props.editUpdateTrip(trip);
                     props.updateOn();
@@ -73,8 +79,8 @@ const TripTable = (props) => {
                 frameBorder="0"
               ></iframe>
             </Row>
-            <Row>
-              <Col md="10">
+            <Row style={{marginTop:"20px"}}>
+              <Col md="10" >
                 <Button
                   color="primary"
                   onClick={() => {
@@ -86,12 +92,14 @@ const TripTable = (props) => {
                 </Button>
               </Col>
               <Col md="2">
-              <i class="fa fa-trash-o" style={{ margin: "auto", height: "20px" }} onClick={() => deleteTrip(trip)}
+              <i class="fa fa-trash-o"                   style={{ fontSize: "24px" }}
+ onClick={() => deleteTrip(trip)}
                 />
               </Col>
             </Row>
           </Container>
-        </Card>
+          </FrontSide>
+        </Flippy>
       );
     });
   };
