@@ -45,21 +45,20 @@ const TripCreate=(props)=>{
     return(
       
         <Flippy flipOnClick={false} isFlipped={flipped} style={{
-            padding: "15px",
-            height: "300px",
-            width: "300px",
-            textAlign: "left",
+                 
           }}>
             <FrontSide style={{
-            padding: "15px",
+            margin:"15px",
+            backgroundColor:"grey",
             height: "300px",
             width: "300px",
             textAlign: "left",
           }} onClick={()=>{setFlipped(true)}}>
-              <i class="fas fa-plus"></i>
+              <span style={{fontSize:"230px",position:"absolute",top:"-14%",left:'26%',color:"beige"}}>+</span>
           </FrontSide>
             <BackSide style={{
-            padding: "15px",
+            backgroundColor:"grey",
+            margin:"15px",
             height: "300px",
             width: "300px",
             textAlign: "left",
