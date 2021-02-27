@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import "./Trips.css"
 import editIcon from '../assets/edit.png';
 import {
   Col,

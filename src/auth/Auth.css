@@ -28,7 +28,6 @@ html {
 
 /* Welcome to travel app */
 h1{
-    font-size: 100px;
     color: #373843;
     text-shadow: 5px 5px #567799;
      -webkit-text-stroke-width: 1px;
@@ -38,12 +37,11 @@ h1{
     /* font-family: 'Fredoka One', cursive; */
     font-family: 'Permanent Marker', cursive;
     letter-spacing: 2px;
-    padding: 10px;
     text-align: center;
 }
 
 #welcome{
-  font-size: 75px;
+  font-size: 65px;
 }
 
 /* Signup/login */
@@ -60,8 +58,17 @@ h2{
 }
 
 .siglog{
-    font-size: 35px;
+  font-size: 35px;
+  
 }
+
+/* Click here */
+#clickHere{
+  background-color: #252532;
+  padding: 5px;
+}
+
+
 
 /* input-box */
 #textBox {
@@ -80,7 +87,7 @@ h2{
     background-color: #303428;
     color: white;
     margin-right: 20px;
-    margin-top: -220px;
+    margin-top: -200px;
   }
 
   /* logo */
@@ -93,13 +100,12 @@ h2{
     z-index: 1;
   }
 
-  /* "footer" */
-  #filler{
+  /* "footer"  */
+   /* #filler{
     background-color: #303428;
     color: white;
     font-size: 15px;
     text-align: center;
     height: 35px;
     margin:0px 10px 0px 0px;
-   
-  }
+  }  */

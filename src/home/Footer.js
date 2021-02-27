@@ -7,7 +7,7 @@ import "./Footer.css"
 const Footer = () => {
     return (
         <footer id="foot">
-        <p>Travel App&copy; Group 5</p>
+        <p>Travel App &copy; Group 5</p>
         </footer>
         );
     };
