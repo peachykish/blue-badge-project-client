@@ -44,24 +44,21 @@ const TripCreate=(props)=>{
         }
     return(
       
-        <Flippy flipOnClick={false} isFlipped={flipped} style={{
+        <Flippy flipOnClick={false} isFlipped={flipped} style={{margin:"15px",
+        height: "300px",
+        width: "300px",
+        textAlign: "left",
                  
           }}>
             <FrontSide style={{
-            margin:"15px",
-            backgroundColor:"grey",
-            height: "300px",
-            width: "300px",
-            textAlign: "left",
+        backgroundColor:"grey",
+            
           }} onClick={()=>{setFlipped(true)}}>
               <span style={{fontSize:"230px",position:"absolute",top:"-14%",left:'26%',color:"beige"}}>+</span>
           </FrontSide>
             <BackSide style={{
-            backgroundColor:"grey",
-            margin:"15px",
-            height: "300px",
-            width: "300px",
-            textAlign: "left",
+        backgroundColor:"grey",
+            
           }}>
             <Form type='submit' onSubmit={handleSubmit}>
             <FormGroup>

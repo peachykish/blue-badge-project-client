@@ -80,15 +80,10 @@ const TripTable = (props) => {
         <Flippy
           flipOnClick={false}
           isFlipped={flipped == trip.id}
-          style={{
-            padding: "15px",
-            margin:"15px",
-            height: "300px",
-            width: "300px",
-            textAlign: "left",
-          }}
+          
         >
           <FrontSide style={{
+            backgroundColor:"grey",
             padding: "15px",
             margin:"15px",
             height: "300px",
@@ -147,8 +142,7 @@ const TripTable = (props) => {
             </Container>
           </FrontSide>
           <BackSide style={{
-            padding: "15px",
-            margin:"15px",
+            
             height: "300px",
             width: "300px",
             textAlign: "left",
