@@ -23,6 +23,7 @@ const TripTable = (props) => {
       localStorage.clear();
     }
   }
+
   const tripUpdate = (latitude, longitude, id) => {
     fetch(`http://localhost:3000/trip/${id}`, {
       method: "PUT",
@@ -73,6 +74,20 @@ const TripTable = (props) => {
         tripUpdate(data[0], data[1], id);
       });
   };
+    const deleteTrip=(trip)=>{
+        fetch(`http://localhost:3000/trip/${trip.id}`,{
+            method:'DELETE',
+            headers: new Headers({
+                'Content-Type':'application/json',
+                'Authorization':props.token
+            })
+        })
+        .then(()=>{
+            console.log("delete");
+            props.fetchTrips()
+        })
+    }
+
   const tripMapper = () => {
     return props.trips.entries?.map((trip) => {
       let url = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12270.76212403068!2d${trip.lon}!3d${trip.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1612883072404!5m2!1sen!2sus`;

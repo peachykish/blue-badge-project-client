@@ -1,10 +1,8 @@
 #foot{
   background-color:#303428;
   color: white;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   text-align: center;
-  padding-top: auto;
+  padding:5px !important;
+  height: 20px;
 }
