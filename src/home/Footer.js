@@ -1,15 +1,18 @@
 import React from "react";
 import {Row} from "reactstrap";
 import "./Footer.css"
+import {Container} from 'reactstrap';
 
-
-//Displaying Eleven Fifty copyright//
 const Footer = () => {
     return (
-        <footer id="foot">
-        <p>Travel App &copy; Group 5</p>
-        </footer>
-        );
-    };
+        
+        <div className="footer py-3">
+          <Container fluid id="foot">
+            &copy; {new Date().getFullYear()} Copyright: Team 5
+          </Container>
+        </div>
+    );
+  }
 
-    export default Footer;
+
+export default Footer;
