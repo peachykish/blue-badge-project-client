@@ -74,19 +74,6 @@ const TripTable = (props) => {
         tripUpdate(data[0], data[1], id);
       });
   };
-    const deleteTrip=(trip)=>{
-        fetch(`http://localhost:3000/trip/${trip.id}`,{
-            method:'DELETE',
-            headers: new Headers({
-                'Content-Type':'application/json',
-                'Authorization':props.token
-            })
-        })
-        .then(()=>{
-            console.log("delete");
-            props.fetchTrips()
-        })
-    }
 
   const tripMapper = () => {
     return props.trips.entries?.map((trip) => {
