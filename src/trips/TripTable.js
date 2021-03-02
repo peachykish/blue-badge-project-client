@@ -20,7 +20,7 @@ const TripTable = (props) => {
       localStorage.clear();
       console.log("expired");
     }
-
+  }
     const deleteTrip=(trip)=>{
         fetch(`http://localhost:3000/trip/${trip.id}`,{
             method:'DELETE',
