@@ -30,7 +30,7 @@ const DestinationCreate = (props) => {
       <Button id="categBtn" onClick={()=>setCategories("interesting_places")}><i class="fa fa-globe"></i> Interesting Places</Button>
       
       {possibleDestinations.map((entry) => (
-        entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations}/>
+        entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations} compare={props.compare}/>
       ))}
       {/* figure out how to hide this button when no more places to show */}
       {count<possibleDestinations.length&&<button onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</button>}
