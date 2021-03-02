@@ -12,6 +12,24 @@ const DestinationIndex=(props)=>{
     const [selectedDestinations,setSelecteDestinations]=useState([]);
     const [filteredDest, setFilteredDest] = useState([])
     
+    
+    const compare=()=>{
+      let reFiltered=[]
+      for (let i=0;i<filteredDest.length;i++){
+        let match=false;
+        for(let j=0;j<selectedDestinations.length;j++){
+          if(filteredDest[i].properties.wikidata==selectedDestinations[j].wikidata){
+            match=true;
+          }
+        }
+          if (!match){
+            reFiltered.push(filteredDest[i])
+          }
+        
+      }
+      setFilteredDest(reFiltered);
+    }
+
     async function fetchSelectedDestinations(){
             let res = await fetch("http://localhost:3000/destination/", {
               method: "GET",
@@ -44,12 +62,13 @@ const DestinationIndex=(props)=>{
               trip={props.tripForDestinations}
               selectedDestinations={selectedDestinations}
               fetchSelectedDestinations={fetchSelectedDestinations}
+              compare={compare}
             />
           
         </Col>
         <Col md="2"/>
         <Col md="5">
-          <DestinationCreate filteredDest={filteredDest} setFilteredDest={setFilteredDest} displayedNum={props.displayedNum} setDisplayedNum={props.setDisplayedNum} token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
+          <DestinationCreate compare={compare} filteredDest={filteredDest} setFilteredDest={setFilteredDest} displayedNum={props.displayedNum} setDisplayedNum={props.setDisplayedNum} token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
         </Col>
       </Row>
         </Container>

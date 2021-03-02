@@ -2,7 +2,6 @@ body {
     background-image:url('../auth/origback.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    margin: 40px;
     color:#252532;
     height: 100%;
     background-attachment: fixed;
@@ -78,7 +77,7 @@ h2{
     border-right: 5px solid #252532;
     height: 40px;
     width: 250px;
-    transform: skew(20deg);
+    transform: skew(10deg);
     /* background-color: rgb(255, 255, 255); */
     background-color: transparent;
   }
