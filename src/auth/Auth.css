@@ -108,3 +108,38 @@ h2{
     height: 35px;
     margin:0px 10px 0px 0px;
   }  */
+
+  #modalBody{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    justify-content: center;
+    color: #373843;
+    /* font-family:sans-serif; */
+    /* font-family: 'Reggae One', cursive; */
+    /* font-family: 'Fredoka One', cursive; */
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  #modalHeader{
+    height: 75px;
+    color: white;
+    background-color: #373843;
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 2px;
+    text-align: center;
+    justify-content: center;
+
+  }
+
+  #modalButton{
+    height: 75px;
+    color: white;
+    background-color: #373843;
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 2px;
+    text-align: center;
+    justify-content: center;
+
+  }
