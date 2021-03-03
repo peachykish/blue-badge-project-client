@@ -74,19 +74,6 @@ const TripTable = (props) => {
         tripUpdate(data[0], data[1], id);
       });
   };
-    // const deleteTrip=(trip)=>{
-    //     fetch(`http://localhost:3000/trip/${trip.id}`,{
-    //         method:'DELETE',
-    //         headers: new Headers({
-    //             'Content-Type':'application/json',
-    //             'Authorization':props.token
-    //         })
-    //     })
-    //     .then(()=>{
-    //         console.log("delete");
-    //         props.fetchTrips()
-    //     })
-    // }
 
   const tripMapper = () => {
     return props.trips.entries?.map((trip) => {
@@ -98,10 +85,9 @@ const TripTable = (props) => {
           
         >
           <FrontSide style={{
-            backgroundColor:"grey",
-            padding: "15px",
-            margin:"15px",
-            height: "300px",
+            backgroundColor:"#e6e9ed",
+            margin:"20px",
+            height: "100%",
             width: "300px",
             textAlign: "left",
           }} >
@@ -136,8 +122,7 @@ const TripTable = (props) => {
               </Row>
               <Row style={{ marginTop: "20px" }}>
                 <Col md="10">
-                  <Button
-                    color="primary"
+                  <Button id="btns"
                     onClick={() => {
                       props.setTripForDestinations(trip);
                       props.setDisplayedNum(6);
@@ -157,10 +142,11 @@ const TripTable = (props) => {
             </Container>
           </FrontSide>
           <BackSide style={{
-            
-            height: "300px",
+            padding:"15px",
+            height: "100%",
             width: "300px",
             textAlign: "left",
+            margin:"20px",
           }} > 
             <Form type="submit" onSubmit={(e) => fetchEditTrips(e, trip.id)}>
               <FormGroup>

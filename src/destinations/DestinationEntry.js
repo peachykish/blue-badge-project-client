@@ -1,5 +1,7 @@
 import {useState} from 'react';
 import { Button,Modal,ModalBody,ModalHeader } from "reactstrap";
+import "./Destinations.css"
+
 function Entry(props) {
     const [modal,setModal]=useState(false);
     
@@ -27,10 +29,10 @@ function Entry(props) {
     <div key={props.item.wikidata}>
       <h1>{props.item.name}</h1>
       <img src={props.item.image} />
-      <Button onClick={() => selectDestination(props.item)}>
+      <Button id="addIt" onClick={() => selectDestination(props.item)}>
         Click to add
       </Button>
-      <Button color="info" onClick={toggle}>?</Button>
+      <Button id="addItQ" onClick={toggle}>?</Button>
       <Modal isOpen={modal} toggle={toggle}>
             <ModalHeader toggle={toggle}>{props.item.name}</ModalHeader>
             <ModalBody>

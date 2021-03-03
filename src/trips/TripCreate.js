@@ -48,21 +48,22 @@ const TripCreate=(props)=>{
         height: "300px",
         width: "300px",
         textAlign: "left",
+      
                  
           }}>
             <FrontSide style={{
-        backgroundColor:"grey",
+        backgroundColor:"#e6e9ed",
             
           }} onClick={()=>{setFlipped(true)}}>
-              <span style={{fontSize:"230px",position:"absolute",top:"-14%",left:'26%',color:"beige"}}>+</span>
+              <span style={{fontSize:"230px",position:"absolute",top:"-14%",left:'26%',color:"#252532"}}>+</span>
           </FrontSide>
             <BackSide style={{
-        backgroundColor:"grey",
+        backgroundColor:"#e6e9ed",
             
           }}>
             <Form type='submit' onSubmit={handleSubmit}>
             <FormGroup>
-                    <Label  htmlFor="place"/>Where to?
+                    <Label htmlFor="place"/>Where to?
                     <Input id="whereTo" placeholder="e.g. Seattle" name="place" value={place} onChange={(e)=>setPlace(e.target.value)}/>
                 </FormGroup>
                 <FormGroup>
@@ -72,8 +73,8 @@ const TripCreate=(props)=>{
                     onChange={(e)=>setDescription(e.target.value)}/>
                 </FormGroup>
 
-                <Button type="submit">Submit</Button>
-                <Button onClick={()=>setFlipped(false)}>Cancel</Button>
+                <Button id="btns" type="submit">Submit</Button>
+                <Button id="btns" onClick={()=>setFlipped(false)}>Cancel</Button>
                 </Form>
                 </BackSide>
         </Flippy>

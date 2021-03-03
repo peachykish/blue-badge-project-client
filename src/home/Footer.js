@@ -1,18 +1,22 @@
-import React from "react";
-import {Row} from "reactstrap";
-import "./Footer.css"
-import {Container} from 'reactstrap';
-
 const Footer = () => {
+  var style = {
+    backgroundColor: "#303428",
+    color: 'white',
+    borderTop: "1px solid #E7E7E7",
+    textAlign: "center",
+    padding: "20px",
+    position: "fixed",
+    left: "0",
+    bottom: "0",
+    height: "60px",
+    width: "100%",
+};
     return (
-        
-        <div className="footer py-3">
-          <Container fluid id="foot">
+        <div style={style}>
+          {/* <Container fluid id="foot"> */}
             &copy; {new Date().getFullYear()} Copyright: Team 5
-          </Container>
+          {/* </Container> */}
         </div>
     );
   }
-
-
 export default Footer;
