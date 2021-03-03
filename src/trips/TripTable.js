@@ -74,21 +74,24 @@ const TripTable = (props) => {
         tripUpdate(data[0], data[1], id);
       });
   };
-    const deleteTrip=(trip)=>{
-        fetch(`http://localhost:3000/trip/${trip.id}`,{
-            method:'DELETE',
-            headers: new Headers({
-                'Content-Type':'application/json',
-                'Authorization':props.token
-            })
-        })
-        .then(()=>{
-            console.log("delete");
-            props.fetchTrips()
-        })
+  function insertionSort(files,attrToSortBy){
+    for(var k=1; k < files.length; k++){
+       for(var i=k; i > 0 && new Date(files[i][attrToSortBy]) > 
+         new Date(files[i-1][attrToSortBy]); i--){
+  
+          var tmpFile = files[i];
+          files[i] = files[i-1];
+          files[i-1] = tmpFile;
+  
+       }
     }
-
+    console.log("sorted!")
+  
+  }
   const tripMapper = () => {
+    let trips=props.trips.entries;
+    console.log(trips);
+    insertionSort(trips,"updatedAt");
     return props.trips.entries?.map((trip) => {
       let url = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12270.76212403068!2d${trip.lon}!3d${trip.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1612883072404!5m2!1sen!2sus`;
       return (
@@ -101,7 +104,7 @@ const TripTable = (props) => {
             backgroundColor:"grey",
             padding: "15px",
             margin:"15px",
-            height: "300px",
+            height: "100",
             width: "300px",
             textAlign: "left",
           }} >

@@ -1,7 +1,17 @@
-import {useEffect, useState} from 'react';
-import { Button,Modal,ModalBody,ModalHeader } from "reactstrap";
+import { useState } from "react";
+import {
+  Button,
+  Card,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  CardImg,
+  CardTitle,
+  Container,
+} from "reactstrap";
 function Entry(props) {
-    const [modal,setModal]=useState(false);
+  const [modal, setModal] = useState(false);
+
   async function selectDestination(item) {
     await fetch("http://localhost:3000/destination", {
       method: "POST",
@@ -18,29 +28,31 @@ function Entry(props) {
         "Content-Type": "application/json",
         Authorization: props.token,
       }),
-    })
+    });
     await props.fetchSelectedDestinations();
-    await props.compare();
+    props.compare(item.wikidata);
   }
-  const toggle=()=>setModal(!modal)
+  const toggle = () => setModal(!modal);
   return (
-    <div key={props.item.wikidata}>
-      <h1>{props.item.name}</h1>
-      <img src={props.item.image} />
-      <Button onClick={() => {
-          selectDestination(props.item);
-          props.compare();
-        }}>
-        Click to add
-      </Button>
-      <Button color="info" onClick={toggle}>?</Button>
-      <Modal isOpen={modal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>{props.item.name}</ModalHeader>
-            <ModalBody>
-                {props.item.descr}
-            </ModalBody>
+    <Card key={props.item.wikidata} style={{ width: "250px", margin: "5px" }}>
+      <Container>
+        <CardTitle>{props.item.name}</CardTitle>
+        <CardImg src={props.item.image} style={{ height: "150px" }} />
+        <Button
+          onClick={() => selectDestination(props.item)}
+          style={{ margin: "10px" }}
+        >
+          Click to add
+        </Button>
+        <Button color="info" onClick={toggle}>
+          ?
+        </Button>
+        <Modal isOpen={modal} toggle={toggle}>
+          <ModalHeader toggle={toggle}>{props.item.name}</ModalHeader>
+          <ModalBody>{props.item.descr}</ModalBody>
         </Modal>
-    </div>
+      </Container>
+    </Card>
   );
 }
 export default Entry;

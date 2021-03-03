@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import {Button} from "reactstrap"
+import {Button,Card} from "reactstrap"
 import Entry from './DestinationEntry'
 
 const DestinationCreate = (props) => {
-  let activeButton="all";
   let count = 0
-  const [possibleDestinations, setPossibleDestinations] = useState([]) 
   const [kinds,setKinds]=useState('foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places')
   useEffect(() => {
     manageDestinations()
@@ -20,6 +18,7 @@ const DestinationCreate = (props) => {
   useEffect(()=>displayPossibleDestinations(),[props.displayedNum])
  
   return (
+    <>
     <div key={props.trip.id}>
       <Button id="categBtn" onClick={()=>setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places")}>All</Button>
       <Button id="categBtn" onClick={()=>setCategories("foods")}> <i class="fa fa-cutlery"></i> Food</Button>
@@ -28,13 +27,15 @@ const DestinationCreate = (props) => {
       <Button id="categBtn" onClick={()=>setCategories("sport")}><i class="fa fa-futbol-o"></i> Sports</Button>
       <Button id="categBtn" onClick={()=>setCategories("accomodations")}><i class="fa fa-bed"></i> Accomodations</Button>
       <Button id="categBtn" onClick={()=>setCategories("interesting_places")}><i class="fa fa-globe"></i> Interesting Places</Button>
+    </div>
       
-      {possibleDestinations.map((entry) => (
+      {props.possibleDestinations?.map((entry) => (
         entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations} compare={props.compare}/>
       ))}
-      {/* figure out how to hide this button when no more places to show */}
-      {count<possibleDestinations.length&&<button onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</button>}
-    </div>
+       {count<props.possibleDestinations?.length ? <Button style={{ width: "250px", height:"250px", margin: "5px"}} 
+                                                  onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</Button> : <></>
+     }
+      </>
   );
   function setCategories(cats){
     count=0;
@@ -43,9 +44,7 @@ const DestinationCreate = (props) => {
   }
   
   function getValidPlaces(unfiltered_places){
-    if ( unfiltered_places){
-      return unfiltered_places.filter(data => data.properties.wikidata)
-    }
+      return unfiltered_places?.filter(data => data.properties.wikidata)
   }
 
   function manageDestinations() {
@@ -63,18 +62,19 @@ const DestinationCreate = (props) => {
 
   async function displayPossibleDestinations(){
         let resArray = []
+        let selectedWikis=props.selectedDestinations?.map((i)=>i.wikidata);
         while(props.filteredDest.length > count  && resArray.length < props.displayedNum){
           let res = await validateDestination(props.filteredDest[count])
           if (res){
             let wikidataArray=resArray.map((i)=>i.wikidata)
-            if(!wikidataArray.includes(res.wikidata)) {
+            if(!wikidataArray.includes(res.wikidata)&&!selectedWikis.includes(res.wikidata)) {
             resArray.push(res)
             }
           }
           count++
 
         }
-        setPossibleDestinations(resArray)
+        props.setPossibleDestinations(resArray)
       }
 
 
