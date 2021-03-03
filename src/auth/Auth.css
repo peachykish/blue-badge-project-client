@@ -143,3 +143,12 @@ h2{
     justify-content: center;
 
   }
+
+  .loginToggle{
+      font-size: 30px;
+      color: #373843;
+       -webkit-text-stroke-width: 0.5px;
+      -webkit-text-stroke-color: #373843;
+      font-family: 'Amatic SC', cursive;
+      letter-spacing: 2px;
+  }
