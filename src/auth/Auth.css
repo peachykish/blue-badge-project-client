@@ -2,7 +2,6 @@ body {
     background-image:url('../auth/origback.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    margin: 40px;
     color:#252532;
     height: 100%;
     background-attachment: fixed;
@@ -15,6 +14,7 @@ html {
 #suBtn{
     background-color:#252532;
     margin-bottom:20px;
+    transform: skew(20deg);
 }
 
 /* username/password */
@@ -66,6 +66,7 @@ h2{
 #clickHere{
   background-color: #252532;
   padding: 5px;
+  transform: skew(10deg);
 }
 
 
@@ -78,7 +79,7 @@ h2{
     border-right: 5px solid #252532;
     height: 40px;
     width: 250px;
-    transform: skew(20deg);
+    transform: skew(10deg);
     /* background-color: rgb(255, 255, 255); */
     background-color: transparent;
   }
@@ -96,16 +97,48 @@ h2{
     height: 190px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    background-size: 75%;
+    background-size: 125px;
     z-index: 1;
+
+
+  #modalBody{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    justify-content: center;
+    color: #373843;
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 2px;
+    text-align: center;
   }
 
-  /* "footer"  */
-   /* #filler{
-    background-color: #303428;
+  #modalHeader{
+    height: 75px;
     color: white;
-    font-size: 15px;
+    background-color: #373843;
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 2px;
     text-align: center;
-    height: 35px;
-    margin:0px 10px 0px 0px;
-  }  */
+    justify-content: center;
+
+  }
+
+  #modalButton{
+    height: 75px;
+    color: white;
+    background-color: #373843;
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 2px;
+    text-align: center;
+    justify-content: center;
+
+  }
+
+  .loginToggle{
+      font-size: 30px;
+      color: #373843;
+       -webkit-text-stroke-width: 0.5px;
+      -webkit-text-stroke-color: #373843;
+      font-family: 'Amatic SC', cursive;
+      letter-spacing: 2px;
+
+  }

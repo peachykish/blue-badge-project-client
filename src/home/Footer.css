@@ -1,10 +1,15 @@
 #foot{
   background-color:#303428;
+  position: 'relative';
   color: white;
-  position: fixed;
-  /* bottom: 0; */
-  left: 0;
   width: 100%;
   text-align: center;
-  padding-top: auto;
+  height: 25px;
+  font-size: 15px;
+  margin-bottom: -20px;
+  padding:5px !important;
+  height: 20px;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }

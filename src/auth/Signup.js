@@ -1,10 +1,13 @@
 import React,{useState} from 'react';
-import {Form,FormGroup,Label, Input,Button} from 'reactstrap';
+import {Form,FormGroup,Label, Input,Button, Modal, ModalHeader, ModalBody} from 'reactstrap';
 
 const Signup = (props)=>{
     const [username,setUsername]=useState('');
     const [password,setPassword]=useState('');
     const [warning,setWarning]=useState(' ');
+    const [authenticated, setAuthenticated] = useState(false);
+    const [show, setShow] = useState(true);
+    const handleClose = () => setShow(false);
     
     const handleSubmit=(event)=>{
         event.preventDefault();
@@ -20,7 +23,13 @@ const Signup = (props)=>{
             })
         })
         .then((res)=>res.json())
-        .then((data)=>{console.log(data);props.updateToken(data.sessionToken)})
+        .then((data)=>{
+            console.log(data);
+            props.updateToken(data.sessionToken);
+            if (props.sessionToken == undefined) {
+                setAuthenticated(true);
+            }
+        })
     }
 
 
@@ -39,6 +48,12 @@ const Signup = (props)=>{
                     <Input id="textBox" onChange={(e)=>setPassword(e.target.value)} name = "password" value={password}/>
 
                 </FormGroup>
+                {authenticated ? 
+                    <Modal isOpen={true}>
+                        <ModalHeader closeButton id="modalHeader">User Already Exists</ModalHeader>
+                        <ModalBody id="modalBody">This User Already Exists.  Please Create A New User Or "CLICK HERE" Below To Login With An Existing User.</ModalBody>
+                        <Button variant="secondary" onClick={() => setAuthenticated(false)} id="modalButton">Close</Button>
+                    </Modal> : <br/> }
                 <Button id="suBtn" type="submit">Signup</Button>
             </Form>
 

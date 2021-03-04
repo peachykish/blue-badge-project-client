@@ -39,3 +39,32 @@
     background-color: 50% transparent;
     color: white;
 }
+
+h2{
+    font-family: 'Amatic SC', cursive;
+    outline: white;
+    color: black;
+}
+
+h3{
+    font-family: 'Shadows Into Light', cursive;
+}
+
+#btns{
+    background-color: #48637e;
+    border-bottom: 1px solid #48637e;
+    border-top: 1px solid #48637e;
+    border-left: 1px solid #48637e;
+    border-right: 1px solid #48637e;
+    height: 35px;
+    text-align:center;
+    transform: skew(20deg);
+}
+
+#whereTo{
+    color: black;
+}
+
+#editInput{
+    transform: skew(20deg);
+}

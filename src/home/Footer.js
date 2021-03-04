@@ -1,15 +1,30 @@
 import React from "react";
-import {Row} from "reactstrap";
 import "./Footer.css"
 
-
-//Displaying Eleven Fifty copyright//
 const Footer = () => {
-    return (
-        <footer id="foot">
-        <p>Travel App &copy; Group 5</p>
-        </footer>
-        );
-    };
 
-    export default Footer;
+
+const Footer = () => {
+  var style = {
+    backgroundColor: "#303428",
+    color: 'white',
+    borderTop: "1px solid #E7E7E7",
+    textAlign: "center",
+    padding: "20px",
+    position: "fixed",
+    left: "0",
+    bottom: "0",
+    height: "60px",
+    width: "100%",
+};
+    return (
+
+        <div style={style}>
+          {/* <Container fluid id="foot"> */}
+            &copy; {new Date().getFullYear()} Copyright: Team 5
+          {/* </Container> */}
+        </div>
+
+    );
+  }
+export default Footer;
