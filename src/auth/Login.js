@@ -48,6 +48,7 @@ const Login = (props)=>{
                         <Button id="modalButton" variant="secondary" onClick={() => setAuthenticated(false)}>Close</Button>
                     </Modal> : <br/> }
                 <Button id="suBtn" type="submit">Login</Button>
+              
             </Form>
         </div>
     )

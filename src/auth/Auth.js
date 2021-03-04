@@ -33,6 +33,9 @@ const Auth = (props)=>{
                 </Col>
                 <Col md="4">
                     
+                <br/>
+                <br/>
+                <br/>
                    
                 </Col>
                 

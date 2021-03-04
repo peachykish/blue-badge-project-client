@@ -74,8 +74,24 @@ const TripTable = (props) => {
         tripUpdate(data[0], data[1], id);
       });
   };
-
+  function insertionSort(files,attrToSortBy){
+    for(var k=1; k < files.length; k++){
+       for(var i=k; i > 0 && new Date(files[i][attrToSortBy]) > 
+         new Date(files[i-1][attrToSortBy]); i--){
+  
+          var tmpFile = files[i];
+          files[i] = files[i-1];
+          files[i-1] = tmpFile;
+  
+       }
+    }
+    console.log("sorted!")
+  
+  }
   const tripMapper = () => {
+    let trips=props.trips.entries;
+    console.log(trips);
+    insertionSort(trips,"updatedAt");
     return props.trips.entries?.map((trip) => {
       let url = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12270.76212403068!2d${trip.lon}!3d${trip.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1612883072404!5m2!1sen!2sus`;
       return (
@@ -142,105 +158,16 @@ const TripTable = (props) => {
             </Container>
           </FrontSide>
           <BackSide style={{
-            padding:"15px",
-            height: "100%",
-            width: "300px",
-            textAlign: "left",
-            margin:"20px",
+             padding:"15px",
+             height: "100%",
+             width: "300px",
+             textAlign: "left",
+             margin:"20px",
           }} > 
             <Form type="submit" onSubmit={(e) => fetchEditTrips(e, trip.id)}>
               <FormGroup>
                 <Label htmlFor="place">Edit the Place:</Label>
-                <Input
-                  name="place"
-                  value={editPlace}
-                  onChange={(e) => setEditPlace(e.target.value)}
-        <Card className="tripCard"
-          key={index}
-          style={{
-            backgroundColor:"grey",
-            padding: "15px",
-            margin:"15px",
-            height: "300px",
-            width: "300px",
-            textAlign: "left",
-
-          <Container>
-            <Row>
-              <Col md="10">
-                <CardTitle>{trip.place}</CardTitle>
-              </Col>
-              <Col md="2">
-                <img
-                  src={Edit}
-                  style={{ height: "20px" }}
-                  onClick={() => {
-                    props.editUpdateTrip(trip);
-                    props.updateOn();
-                  }}
-
-          }} >
-            <Container>
-              <Row>
-                <Col md="10">
-                  <h2>{trip.place}</h2>
-                </Col>
-                <Col md="2">
-                  {flipped == -1 && (
-                    <i
-                      class="fa fa-pencil"
-                      style={{ fontSize: "24px" }}
-                      onClick={() => {
-                        setEditDesc(trip.description);
-                        setEditPlace(trip.place);
-                        setFlipped(trip.id);
-                      }}
-                    />
-                  )}
-                </Col>
-              </Row>
-              <Row>
-                <h3>{trip.description}</h3>
-              </Row>
-              <Row>
-                <iframe
-                  src={url}
-                  style={{ height: "150px", width: "220px", margin: "auto" }}
-                  frameBorder="0"
-                ></iframe>
-              </Row>
-              <Row style={{ marginTop: "20px" }}>
-                <Col md="10">
-                  <Button
-                    color="primary"
-                    onClick={() => {
-                      props.setTripForDestinations(trip);
-                      props.setDisplayedNum(6);
-                    }}
-                  >
-                    Things to do
-                  </Button>
-                </Col>
-                <Col md="2">
-                  <i
-                    class="fa fa-trash-o"
-                    style={{ fontSize: "24px" }}
-                    onClick={() => deleteTrip(trip)}
-                  />
-                </Col>
-              </Row>
-            </Container>
-          </FrontSide>
-          <BackSide style={{
-            
-            height: "300px",
-            width: "300px",
-            textAlign: "left",
-          }} > 
-            <Form type="submit" onSubmit={(e) => fetchEditTrips(e, trip.id)}>
-              <FormGroup>
-                <Label htmlFor="place">Edit the Place:</Label>
-                <Input
+                <Input id="editInput"
                   name="place"
                   value={editPlace}
                   onChange={(e) => setEditPlace(e.target.value)}
@@ -248,13 +175,13 @@ const TripTable = (props) => {
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="description">Edit the Reason:</Label>
-                <Input
+                <Input id="editInput"
                   name="description"
                   value={editDesc}
                   onChange={(e) => setEditDesc(e.target.value)}
                 />
               </FormGroup>
-              <Button type="submit">Update</Button>
+              <Button id="btns" type="submit">Update</Button>
             </Form>
           </BackSide>
         </Flippy>
