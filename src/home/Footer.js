@@ -17,6 +17,7 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Copyright: Team 5
           {/* </Container> */}
         </div>
+
     );
   }
 export default Footer;
