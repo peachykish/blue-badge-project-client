@@ -4,10 +4,26 @@ import Entry from './DestinationEntry'
 import "./Destinations.css"
 
 const DestinationCreate = (props) => {
-  let activeButton="all";
   let count = 0
   const [possibleDestinations, setPossibleDestinations] = useState([]) 
   const [kinds,setKinds]=useState('foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places')
+  const [color1, setColor1] = useState('red');
+  const [color2, setColor2] = useState('gray');
+  const [color3, setColor3] = useState('gray');
+  const [color4, setColor4] = useState('gray');
+  const [color5, setColor5] = useState('gray');
+  const [color6, setColor6] = useState('gray');
+  const [color7, setColor7] = useState('gray');
+
+  function setClick(buttonNumber){
+    buttonNumber == 1 ? setColor1('red') : setColor1('gray');
+    buttonNumber == 2 ? setColor2('red') : setColor2('gray');
+    buttonNumber == 3 ? setColor3('red') : setColor3('gray');
+    buttonNumber == 4 ? setColor4('red') : setColor4('gray');
+    buttonNumber == 5 ? setColor5('red') : setColor5('gray');
+    buttonNumber == 6 ? setColor6('red') : setColor6('gray');
+    buttonNumber == 7 ? setColor7('red') : setColor7('gray');
+  }
   useEffect(() => {
     manageDestinations()
   }, [props.trip,kinds]);
@@ -19,16 +35,101 @@ const DestinationCreate = (props) => {
   }, [props.filteredDest])
 
   useEffect(()=>displayPossibleDestinations(),[props.displayedNum])
+
+  const myStyle1 = {
+    backgroundColor: color1,
+    borderBottom: '5px solid #252532',
+    borderTop: '5px solid #252532',
+    borderRight: '5px solid #252532',
+    borderLeft: '5px solid #252532',
+    transform: 'skew(20deg)',
+    color: 'white',
+    margin: '2px',
+    fontSize: 'small',
+    marginBottom: '10px'
+  }
+  const myStyle2 = {
+    backgroundColor: color2,
+    borderBottom: '5px solid #252532',
+    borderTop: '5px solid #252532',
+    borderRight: '5px solid #252532',
+    borderLeft: '5px solid #252532',
+    transform: 'skew(20deg)',
+    color: 'white',
+    margin: '2px',
+    fontSize: 'small',
+    marginBottom: '10px'
+  }
+  const myStyle3 = {
+    backgroundColor: color3,
+    borderBottom: '5px solid #252532',
+    borderTop: '5px solid #252532',
+    borderRight: '5px solid #252532',
+    borderLeft: '5px solid #252532',
+    transform: 'skew(20deg)',
+    color: 'white',
+    margin: '2px',
+    fontSize: 'small',
+    marginBottom: '10px'
+  }
+  const myStyle4 = {
+    backgroundColor: color4,
+    borderBottom: '5px solid #252532',
+    borderTop: '5px solid #252532',
+    borderRight: '5px solid #252532',
+    borderLeft: '5px solid #252532',
+    transform: 'skew(20deg)',
+    color: 'white',
+    margin: '2px',
+    fontSize: 'small',
+    marginBottom: '10px'
+  }
+  const myStyle5 = {
+    backgroundColor: color5,
+    borderBottom: '5px solid #252532',
+    borderTop: '5px solid #252532',
+    borderRight: '5px solid #252532',
+    borderLeft: '5px solid #252532',
+    transform: 'skew(20deg)',
+    color: 'white',
+    margin: '2px',
+    fontSize: 'small',
+    marginBottom: '10px'
+  }
+  const myStyle6 = {
+    backgroundColor: color6,
+    borderBottom: '5px solid #252532',
+    borderTop: '5px solid #252532',
+    borderRight: '5px solid #252532',
+    borderLeft: '5px solid #252532',
+    transform: 'skew(20deg)',
+    color: 'white',
+    margin: '2px',
+    fontSize: 'small',
+    marginBottom: '10px'
+  }
+  const myStyle7 = {
+    backgroundColor: color7,
+    borderBottom: '5px solid #252532',
+    borderTop: '5px solid #252532',
+    borderRight: '5px solid #252532',
+    borderLeft: '5px solid #252532',
+    transform: 'skew(20deg)',
+    color: 'white',
+    margin: '2px',
+    fontSize: 'small',
+    marginBottom: '10px'
+  }
  
   return (
     <div key={props.trip.id}>
-      <Button id="categBtn" onClick={()=>setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places")}>All</Button>
-      <Button id="categBtn" onClick={()=>setCategories("foods")}> <i class="fa fa-cutlery"></i> Food</Button>
-      <Button id="categBtn" onClick={()=>setCategories("amusements")}><i class="fa fa-bicycle"></i> Amusements</Button>
-      <Button id="categBtn" onClick={()=>setCategories("shops")}><i class="fa fa-cart-plus"></i> Shopping</Button>
-      <Button id="categBtn" onClick={()=>setCategories("sport")}><i class="fa fa-futbol-o"></i> Sports</Button>
-      <Button id="categBtn" onClick={()=>setCategories("accomodations")}><i class="fa fa-bed"></i> Accomodations</Button>
-      <Button id="categBtn" onClick={()=>setCategories("interesting_places")}><i class="fa fa-globe"></i> Interesting Places</Button>
+      <Button style={myStyle1} onClick={()=>{setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places"); setClick(1)}}>All</Button>
+      <Button style={myStyle2} onClick={()=>{setCategories("foods"); setClick(2)}}> <i class="fa fa-cutlery"></i> Food</Button>
+      <Button style={myStyle3} onClick={()=>{setCategories("amusements"); setClick(3)}}><i class="fa fa-bicycle"></i> Amusements</Button>
+      <Button style={myStyle4} onClick={()=>{setCategories("shops"); setClick(4)}}><i class="fa fa-cart-plus"></i> Shopping</Button>
+      <Button style={myStyle5} onClick={()=>{setCategories("sport"); setClick(5)}}><i class="fa fa-futbol-o"></i> Sports</Button>
+      <Button style={myStyle6} onClick={()=>{setCategories("accomodations"); setClick(6)}}><i class="fa fa-bed"></i> Accomodations</Button>
+      <Button style={myStyle7} onClick={()=>{setCategories("interesting_places"); setClick(7)}}><i class="fa fa-globe"></i> Interesting Places</Button>
       
       {possibleDestinations.map((entry) => (
         entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations}/>

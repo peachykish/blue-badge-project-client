@@ -97,4 +97,46 @@ h2{
     background-repeat: no-repeat;
     background-size: 125px;
     z-index: 1;
+
+
+  #modalBody{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    justify-content: center;
+    color: #373843;
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  #modalHeader{
+    height: 75px;
+    color: white;
+    background-color: #373843;
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 2px;
+    text-align: center;
+    justify-content: center;
+
+  }
+
+  #modalButton{
+    height: 75px;
+    color: white;
+    background-color: #373843;
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 2px;
+    text-align: center;
+    justify-content: center;
+
+  }
+
+  .loginToggle{
+      font-size: 30px;
+      color: #373843;
+       -webkit-text-stroke-width: 0.5px;
+      -webkit-text-stroke-color: #373843;
+      font-family: 'Amatic SC', cursive;
+      letter-spacing: 2px;
+
   }
