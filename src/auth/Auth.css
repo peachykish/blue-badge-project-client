@@ -95,16 +95,6 @@ h2{
     height: 190px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    background-size: 75%;
+    background-size: 125px;
     z-index: 1;
   }
-
-  /* "footer"  */
-   /* #filler{
-    background-color: #303428;
-    color: white;
-    font-size: 15px;
-    text-align: center;
-    height: 35px;
-    margin:0px 10px 0px 0px;
-  }  */

@@ -1,8 +1,9 @@
 #removeIt{
-    border-bottom: 5px solid #252532;
-    border-top: 5px solid #252532;
-    border-left: 5px solid #252532;
-    border-right: 5px solid #252532;
+    background-color: #48637e;
+    border-bottom: 5px solid #48637e;
+    border-top: 5px solid #48637e;
+    border-left: 5px solid #48637e;
+    border-right: 5px solid #48637e;
     height: 40px;
     transform: skew(20deg);
     background-color: 50% transparent;
@@ -10,16 +11,15 @@
 }
 
 #removeIt:hover{
-    background-color:transparent;
-    color: #38383a;
+    background-color: transparent;
 }
 
 #categBtn{
-
-    border-bottom: 5px solid #252532;
-    border-top: 5px solid #252532;
-    border-left: 5px solid #252532;
-    border-right: 5px solid #252532;
+    background-color: #48637e;
+    border-bottom: 5px solid #48637e;
+    border-top: 5px solid #48637e;
+    border-left: 5px solid #48637e;
+    border-right: 5px solid #48637e;
     transform: skew(20deg);
     background-color: 50% transparent;
     color: white;
@@ -33,3 +33,84 @@
     color: #38383a;
 }
 
+h3{
+    font-family: 'Shadows Into Light', cursive;
+    text-decoration: underline;
+}
+
+#addItQ{
+    background-color: transparent;
+    color: black;
+    border-bottom: 5px solid #48637e;
+     border-top: 5px solid #48637e;
+     border-left: 5px solid #48637e;
+     border-right: 5px solid #48637e;
+     margin-left: 7px;
+     height: 35px;
+     text-align:center;
+     transform: skew(20deg);
+ }
+ 
+ #addItQ:hover{
+     background-color: #48637e;
+     border-bottom: 5px solid #48637e;
+     border-top: 5px solid #48637e;
+     border-left: 5px solid #48637e;
+     border-right: 5px solid #48637e;
+     height: 35px;
+     text-align:center;
+     transform: skew(20deg);
+     color: white;
+ }
+ 
+
+ #addIt:hover{
+    background-color: transparent;
+    color: black;
+    border-bottom: 5px solid #48637e;
+     border-top: 5px solid #48637e;
+     border-left: 5px solid #48637e;
+     border-right: 5px solid #48637e;
+     height: 35px;
+     text-align:center;
+     transform: skew(20deg);
+     text-align: center;
+ }
+
+ #addIt{
+    background-color: #48637e;
+    border-bottom: 5px solid #48637e;
+    border-top: 5px solid #48637e;
+    border-left: 5px solid #48637e;
+    border-right: 5px solid #48637e;
+    height: 35px;
+    text-align:center;
+    transform: skew(20deg);
+    margin-top: 5px;
+}
+
+#loading:hover{
+    background-color: transparent;
+    color: black;
+    border-bottom: 5px solid #48637e;
+     border-top: 5px solid #48637e;
+     border-left: 5px solid #48637e;
+     border-right: 5px solid #48637e;
+     height: 35px;
+     text-align:center;
+     transform: skew(20deg);
+     text-align: center;
+ }
+
+ #loading{
+    background-color: #48637e;
+    color: white;
+    border-bottom: 5px solid #48637e;
+    border-top: 5px solid #48637e;
+    border-left: 5px solid #48637e;
+    border-right: 5px solid #48637e;
+    height: 35px;
+    text-align:center;
+    transform: skew(20deg);
+    margin-top: 5px;
+}

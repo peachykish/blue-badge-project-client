@@ -25,7 +25,7 @@ const DestinationTable=(props)=>{
          return props.selectedDestinations.map((destination)=>{
             return(
                 <div key={destination.id}>
-                    <h1 >{destination.name}</h1>
+                    <h1>{destination.name}</h1>
                     <img src={destination.image} alt={destination.name}/>
                     <p>{destination.descr}</p>
                      <Button id="removeIt" onClick={()=>deleteDestination(destination)}>Remove</Button>

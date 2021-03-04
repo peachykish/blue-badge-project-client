@@ -54,7 +54,8 @@ const TripCreate=(props)=>{
         backgroundColor:"grey",
             
           }} onClick={()=>{setFlipped(true)}}>
-              <span style={{fontSize:"230px",position:"absolute",top:"-14%",left:'26%',color:"beige"}}>+</span>
+              {/* <span style={{,color:"beige"}}>+</span> */}
+              <i className="fa fa-plus-square-o" aria-hidden="true" style={{fontSize:"200px",position:"absolute",top:"18.5%",left:'25%'}}></i>
           </FrontSide>
             <BackSide style={{
         backgroundColor:"grey",
