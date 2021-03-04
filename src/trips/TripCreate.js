@@ -51,14 +51,14 @@ const TripCreate=(props)=>{
                  
           }}>
             <FrontSide style={{
-        backgroundColor:"grey",
+        backgroundColor:"#e6e9ed",
             
           }} onClick={()=>{setFlipped(true)}}>
               {/* <span style={{,color:"beige"}}>+</span> */}
-              <i className="fa fa-plus-square-o" aria-hidden="true" style={{fontSize:"200px",position:"absolute",top:"18.5%",left:'25%'}}></i>
+              <i className="fa fa-plus-square-o" aria-hidden="true" style={{fontSize:"230px",position:"absolute",top:"18.5%",left:'25%', color:"#252532"}}></i>
           </FrontSide>
             <BackSide style={{
-        backgroundColor:"grey",
+        backgroundColor:"#e6e9ed",
             
           }}>
             <Form type='submit' onSubmit={handleSubmit}>
@@ -73,8 +73,8 @@ const TripCreate=(props)=>{
                     onChange={(e)=>setDescription(e.target.value)}/>
                 </FormGroup>
 
-                <Button type="submit">Submit</Button>
-                <Button onClick={()=>setFlipped(false)}>Cancel</Button>
+                <Button id="btns" type="submit">Submit</Button>
+                <Button id="btns" onClick={()=>setFlipped(false)}>Cancel</Button>
                 </Form>
                 </BackSide>
         </Flippy>

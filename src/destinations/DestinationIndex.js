@@ -8,26 +8,31 @@ import DestinationCreate from './DestinationCreate';
 const DestinationIndex=(props)=>{
 
     console.log("destination props",props);
-    //reformat dest to include "isSaved" this line no longer needed VVV
     const [selectedDestinations,setSelecteDestinations]=useState([]);
+    const [possibleDestinations, setPossibleDestinations] = useState([]) 
     const [filteredDest, setFilteredDest] = useState([])
     
     
-    const compare=()=>{
-      let reFiltered=[]
-      for (let i=0;i<filteredDest.length;i++){
-        let match=false;
-        for(let j=0;j<selectedDestinations.length;j++){
-          if(filteredDest[i].properties.wikidata==selectedDestinations[j].wikidata){
-            match=true;
-          }
-        }
-          if (!match){
-            reFiltered.push(filteredDest[i])
-          }
+    const compare=(wiki)=>{
+      let reFiltered=[...possibleDestinations];
+      reFiltered=reFiltered.filter((item)=>item.wikidata!=wiki);
+      setPossibleDestinations(reFiltered);
+      // let reFiltered=[]
+      // for (let i=0;i<possibleDestinations.length;i++){
+      //   let match=false;
+      //   for(let j=0;j<selectedDestinations.length;j++){
+      //     if(possibleDestinations[i].wikidata==selectedDestinations[j].wikidata){
+      //       match=true;
+      //     }
+      //   }
+      //     if (!match){
+      //       reFiltered.push(possibleDestinations[i])
+      //     }
         
-      }
-      setFilteredDest(reFiltered);
+      // }
+      // setPossibleDestinations(reFiltered);
+      // console.log(reFiltered);
+      // console.log(possibleDestinations)
     }
 
     async function fetchSelectedDestinations(){
@@ -40,10 +45,7 @@ const DestinationIndex=(props)=>{
             })
               res = await res.json()
               let newArr = await tripDestinations(res.entries)
-                console.log("newArr",newArr);
-                console.log(res);
-      
-              let nothing = await setSelecteDestinations(newArr);
+              await setSelecteDestinations(newArr);
                 
           }; 
     async function tripDestinations(arr){
@@ -56,19 +58,22 @@ const DestinationIndex=(props)=>{
     return (
         <Container>
           <Row>
-        <Col md="5">
+        <Col md="6">
             <DestinationTable
               token={props.token}
               trip={props.tripForDestinations}
               selectedDestinations={selectedDestinations}
               fetchSelectedDestinations={fetchSelectedDestinations}
+              possibleDestinations={possibleDestinations} 
+              setPossibleDestinations={setPossibleDestinations}
               compare={compare}
             />
           
         </Col>
-        <Col md="2"/>
-        <Col md="5">
-          <DestinationCreate compare={compare} filteredDest={filteredDest} setFilteredDest={setFilteredDest} displayedNum={props.displayedNum} setDisplayedNum={props.setDisplayedNum} token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations}/>
+      
+        <Col md="6">
+          <Row><DestinationCreate compare={compare} filteredDest={filteredDest} setFilteredDest={setFilteredDest} displayedNum={props.displayedNum} setDisplayedNum={props.setDisplayedNum} token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations} possibleDestinations={possibleDestinations} setPossibleDestinations={setPossibleDestinations}/>
+          </Row>
         </Col>
       </Row>
         </Container>
