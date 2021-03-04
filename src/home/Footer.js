@@ -1,10 +1,10 @@
 import React from "react";
-// import {Row} from "reactstrap";
 import "./Footer.css"
-// import {Container} from 'reactstrap';
 
 const Footer = () => {
 
+
+const Footer = () => {
   var style = {
     backgroundColor: "#303428",
     color: 'white',
@@ -18,7 +18,7 @@ const Footer = () => {
     width: "100%",
 };
     return (
-        
+
         <div style={style}>
           {/* <Container fluid id="foot"> */}
             &copy; {new Date().getFullYear()} Copyright: Team 5
@@ -26,6 +26,4 @@ const Footer = () => {
         </div>
     );
   }
-
-
 export default Footer;

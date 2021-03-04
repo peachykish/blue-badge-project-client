@@ -95,28 +95,15 @@ h2{
     height: 190px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    background-size: 75%;
+    background-size: 125px;
     z-index: 1;
-  }
 
-  /* "footer"  */
-   /* #filler{
-    background-color: #303428;
-    color: white;
-    font-size: 15px;
-    text-align: center;
-    height: 35px;
-    margin:0px 10px 0px 0px;
-  }  */
 
   #modalBody{
     margin-top: 50px;
     margin-bottom: 50px;
     justify-content: center;
     color: #373843;
-    /* font-family:sans-serif; */
-    /* font-family: 'Reggae One', cursive; */
-    /* font-family: 'Fredoka One', cursive; */
     font-family: 'Permanent Marker', cursive;
     letter-spacing: 2px;
     text-align: center;
@@ -151,4 +138,5 @@ h2{
       -webkit-text-stroke-color: #373843;
       font-family: 'Amatic SC', cursive;
       letter-spacing: 2px;
+
   }

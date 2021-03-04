@@ -85,12 +85,100 @@ const TripTable = (props) => {
           
         >
           <FrontSide style={{
+            backgroundColor:"#e6e9ed",
+            margin:"20px",
+            height: "100%",
+            width: "300px",
+            textAlign: "left",
+          }} >
+            <Container>
+              <Row>
+                <Col md="10">
+                  <h2>{trip.place}</h2>
+                </Col>
+                <Col md="2">
+                  {flipped == -1 && (
+                    <i
+                      class="fa fa-pencil"
+                      style={{ fontSize: "24px" }}
+                      onClick={() => {
+                        setEditDesc(trip.description);
+                        setEditPlace(trip.place);
+                        setFlipped(trip.id);
+                      }}
+                    />
+                  )}
+                </Col>
+              </Row>
+              <Row>
+                <h3>{trip.description}</h3>
+              </Row>
+              <Row>
+                <iframe
+                  src={url}
+                  style={{ height: "150px", width: "220px", margin: "auto" }}
+                  frameBorder="0"
+                ></iframe>
+              </Row>
+              <Row style={{ marginTop: "20px" }}>
+                <Col md="10">
+                  <Button id="btns"
+                    onClick={() => {
+                      props.setTripForDestinations(trip);
+                      props.setDisplayedNum(6);
+                    }}
+                  >
+                    Things to do
+                  </Button>
+                </Col>
+                <Col md="2">
+                  <i
+                    class="fa fa-trash-o"
+                    style={{ fontSize: "24px" }}
+                    onClick={() => deleteTrip(trip)}
+                  />
+                </Col>
+              </Row>
+            </Container>
+          </FrontSide>
+          <BackSide style={{
+            padding:"15px",
+            height: "100%",
+            width: "300px",
+            textAlign: "left",
+            margin:"20px",
+          }} > 
+            <Form type="submit" onSubmit={(e) => fetchEditTrips(e, trip.id)}>
+              <FormGroup>
+                <Label htmlFor="place">Edit the Place:</Label>
+                <Input
+                  name="place"
+                  value={editPlace}
+                  onChange={(e) => setEditPlace(e.target.value)}
+        <Card className="tripCard"
+          key={index}
+          style={{
             backgroundColor:"grey",
             padding: "15px",
             margin:"15px",
             height: "300px",
             width: "300px",
             textAlign: "left",
+
+          <Container>
+            <Row>
+              <Col md="10">
+                <CardTitle>{trip.place}</CardTitle>
+              </Col>
+              <Col md="2">
+                <img
+                  src={Edit}
+                  style={{ height: "20px" }}
+                  onClick={() => {
+                    props.editUpdateTrip(trip);
+                    props.updateOn();
+                  }}
+
           }} >
             <Container>
               <Row>
