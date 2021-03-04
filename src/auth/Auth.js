@@ -26,7 +26,7 @@ const Auth = (props)=>{
                    
                     {toggle ? <Signup updateToken={props.updateToken}/> : <Login updateToken={props.updateToken}/>}
 
-                First Time Traveler?<br/>
+                    {toggle ? <p class="loginToggle">FIRST TIME TRAVELER?</p> : <p class="loginToggle">DON'T HAVE A LOGIN?  CLICK BELOW</p>}
                 <Button id="clickHere" onClick={() => setToggle(!toggle)}>CLICK HERE</Button> 
                     <br/>
 

@@ -28,7 +28,6 @@ const Login = (props)=>{
             }
         })
     }
-                // alert('No user Found!')});
     return(
         <div>
             <h2 className="siglog">LOG IN</h2>
@@ -44,9 +43,9 @@ const Login = (props)=>{
                 </FormGroup>
                 {authenticated ? 
                     <Modal isOpen={true}>
-                        <ModalHeader closeButton>No User Exists</ModalHeader>
-                        <ModalBody>Please Try Again With Valid User</ModalBody>
-                        <Button variant="secondary" onClick={() => setAuthenticated(false)}>Close</Button>
+                        <ModalHeader closeButton id="modalHeader">No User Exists</ModalHeader>
+                        <ModalBody id="modalBody">Please Try Again With Valid Username and Password</ModalBody>
+                        <Button id="modalButton" variant="secondary" onClick={() => setAuthenticated(false)}>Close</Button>
                     </Modal> : <br/> }
                 <Button id="suBtn" type="submit">Login</Button>
               

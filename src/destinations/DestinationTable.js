@@ -28,7 +28,9 @@ const DestinationTable=(props)=>{
                     <h1>{destination.name}</h1>
                     <img src={destination.image} alt={destination.name}/>
                     <p>{destination.descr}</p>
-                     <Button id="removeIt" onClick={()=>deleteDestination(destination)}>Remove</Button>
+                     <Button id="removeIt" onClick={()=>{
+                         props.setPossibleDestinations([...props.possibleDestinations,destination])
+                         deleteDestination(destination);}}>Remove</Button>
                  </div>
              )
          })
@@ -40,6 +42,11 @@ const DestinationTable=(props)=>{
         <h3>Destination Table</h3>
         <div>
             {props.selectedDestinations.length==0?useEffect:selectedDestinationsMapper()}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
         </>
      )
