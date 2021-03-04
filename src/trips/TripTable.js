@@ -167,7 +167,7 @@ const TripTable = (props) => {
             <Form type="submit" onSubmit={(e) => fetchEditTrips(e, trip.id)}>
               <FormGroup>
                 <Label htmlFor="place">Edit the Place:</Label>
-                <Input
+                <Input id="editInput"
                   name="place"
                   value={editPlace}
                   onChange={(e) => setEditPlace(e.target.value)}
@@ -175,13 +175,13 @@ const TripTable = (props) => {
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="description">Edit the Reason:</Label>
-                <Input
+                <Input id="editInput"
                   name="description"
                   value={editDesc}
                   onChange={(e) => setEditDesc(e.target.value)}
                 />
               </FormGroup>
-              <Button type="submit">Update</Button>
+              <Button id="btns" type="submit">Update</Button>
             </Form>
           </BackSide>
         </Flippy>
