@@ -1,3 +1,9 @@
+import React from "react";
+import "./Footer.css"
+
+const Footer = () => {
+
+
 const Footer = () => {
   var style = {
     backgroundColor: "#303428",
@@ -12,11 +18,13 @@ const Footer = () => {
     width: "100%",
 };
     return (
+
         <div style={style}>
           {/* <Container fluid id="foot"> */}
             &copy; {new Date().getFullYear()} Copyright: Team 5
           {/* </Container> */}
         </div>
+
     );
   }
 export default Footer;

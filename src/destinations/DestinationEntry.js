@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
   Button,
@@ -10,8 +9,6 @@ import {
   CardTitle,
   Container,
 } from "reactstrap";
-
-
 import "./Destinations.css"
 
 function Entry(props) {
@@ -43,13 +40,14 @@ function Entry(props) {
       <Container>
         <CardTitle>{props.item.name}</CardTitle>
         <CardImg src={props.item.image} style={{ height: "150px" }} />
-        <Button
+        <Button id="addIt"
           onClick={() => selectDestination(props.item)}
           style={{ margin: "10px" }}
         >
           Click to add
         </Button>
-        <Button color="info" onClick={toggle}>
+
+        <Button id="addItQ" color="info" onClick={toggle}>
           ?
         </Button>
         <Modal isOpen={modal} toggle={toggle}>

@@ -42,6 +42,11 @@ const DestinationTable=(props)=>{
         <h3>Destination Table</h3>
         <div>
             {props.selectedDestinations.length==0?useEffect:selectedDestinationsMapper()}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
         </>
      )
