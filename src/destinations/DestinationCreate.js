@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {Button,Card} from "reactstrap"
 import Entry from './DestinationEntry'
+import "./Destinations.css"
 
 const DestinationCreate = (props) => {
   let count = 0
@@ -32,6 +33,7 @@ const DestinationCreate = (props) => {
       {props.possibleDestinations?.map((entry) => (
         entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations} compare={props.compare}/>
       ))}
+
        {count<props.possibleDestinations?.length ? <Button style={{ width: "250px", height:"250px", margin: "5px"}} 
                                                   onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</Button> : <></>
      }

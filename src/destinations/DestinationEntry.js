@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import {
   Button,
@@ -9,6 +10,10 @@ import {
   CardTitle,
   Container,
 } from "reactstrap";
+
+
+import "./Destinations.css"
+
 function Entry(props) {
   const [modal, setModal] = useState(false);
 
