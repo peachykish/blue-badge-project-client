@@ -46,6 +46,7 @@ function Entry(props) {
         >
           Click to add
         </Button>
+
         <Button id="addItQ" color="info" onClick={toggle}>
           ?
         </Button>
