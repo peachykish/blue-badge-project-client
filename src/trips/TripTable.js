@@ -1,28 +1,27 @@
-import React, { useState } from "react";
-import Flippy, { FrontSide, BackSide } from "react-flippy";
+import React, { useState,useEffect } from 'react';
+import "./Trips.css"
+import editIcon from '../assets/edit.png';
 import {
+  Col,
+  Table,
+  Button,
+  Card,
   Container,
   Row,
-  Col,
-  Button,
-  Label,
-  Input,
-  FormGroup,
-  Form,
+  CardTitle,
+  CardSubtitle,
 } from "reactstrap";
-import "./Trips.css";
+import Edit from "../assets/edit.png";
+import Trash from "../assets/trash.png";
 
 const TripTable = (props) => {
-  const [flipped, setFlipped] = useState(-1);
-  const [editDesc, setEditDesc] = useState("");
-  const [editPlace, setEditPlace] = useState("");
-  const [lat, setLat] = useState(0.0);
-  const [lon, setLon] = useState(0.0);
   if (props.trips.error) {
     if (props.trips.error.name == "TokenExpiredError") {
       localStorage.clear();
+      console.log("expired");
     }
   }
+<<<<<<< HEAD
 
   const tripUpdate = (latitude, longitude, id) => {
     fetch(`http://localhost:3000/trip/${id}`, {
@@ -74,11 +73,27 @@ const TripTable = (props) => {
         tripUpdate(data[0], data[1], id);
       });
   };
+=======
+    const deleteTrip=(trip)=>{
+        fetch(`http://localhost:3000/trip/${trip.id}`,{
+            method:'DELETE',
+            headers: new Headers({
+                'Content-Type':'application/json',
+                'Authorization':props.token
+            })
+        })
+        .then(()=>{
+            console.log("delete");
+            props.fetchTrips()
+        })
+    }
+>>>>>>> 7ab1052699c00ec7598276678c5a2b6bc2994123
 
   const tripMapper = () => {
-    return props.trips.entries?.map((trip) => {
+    return props.trips.entries?.map((trip, index) => {
       let url = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12270.76212403068!2d${trip.lon}!3d${trip.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1612883072404!5m2!1sen!2sus`;
       return (
+<<<<<<< HEAD
         <Flippy
           flipOnClick={false}
           isFlipped={flipped == trip.id}
@@ -155,28 +170,75 @@ const TripTable = (props) => {
                   name="place"
                   value={editPlace}
                   onChange={(e) => setEditPlace(e.target.value)}
+=======
+        <Card className="tripCard"
+          key={index}
+          style={{
+            padding: "15px",
+            height: "300px",
+            width: "300px",
+            textAlign: "left",
+          }}
+        >
+          <Container>
+            <Row>
+              <Col md="10">
+                <CardTitle>{trip.place}</CardTitle>
+              </Col>
+              <Col md="2">
+                <img
+                  src={Edit}
+                  style={{ height: "20px" }}
+                  onClick={() => {
+                    props.editUpdateTrip(trip);
+                    props.updateOn();
+                  }}
+>>>>>>> 7ab1052699c00ec7598276678c5a2b6bc2994123
                 />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlFor="description">Edit the Reason:</Label>
-                <Input
-                  name="description"
-                  value={editDesc}
-                  onChange={(e) => setEditDesc(e.target.value)}
+              </Col>
+            </Row>
+            <Row>
+              <CardSubtitle>{trip.description}</CardSubtitle>
+            </Row>
+            <Row>
+              <iframe
+                src={url}
+                style={{ height: "150px", width: "220px", margin: "auto" }}
+                frameBorder="0"
+              ></iframe>
+            </Row>
+            <Row>
+              <Col md="10">
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    props.setTripForDestinations(trip);
+                    props.setDisplayedNum(6);
+                  }}
+                >
+                  Things to do
+                </Button>
+              </Col>
+              <Col md="2">
+                <img
+                  src={Trash}
+                  style={{ margin: "auto", height: "20px" }}
+                  onClick={() => deleteTrip(trip)}
                 />
-              </FormGroup>
-              <Button type="submit">Update</Button>
-            </Form>
-          </BackSide>
-        </Flippy>
+              </Col>
+            </Row>
+          </Container>
+        </Card>
       );
     });
   };
 
   return (
-    <> 
-      {props.trips.entries && props.trips.entries.length > 0 && tripMapper()}
-    </>
+    <div className="tripCards">
+      {props.trips.entries && props.trips.entries.length == 0
+        ? useEffect
+        : tripMapper()}
+    </div>
   );
 };
 

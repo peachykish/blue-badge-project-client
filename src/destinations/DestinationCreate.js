@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {Button} from "reactstrap"
+import {Button,} from "reactstrap"
 import Entry from './DestinationEntry'
 import "./Destinations.css"
 
@@ -33,6 +33,7 @@ const DestinationCreate = (props) => {
       {possibleDestinations.map((entry) => (
         entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations}/>
       ))}
+    
       {/* figure out how to hide this button when no more places to show */}
       {count<possibleDestinations.length&&<button id="loading" onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</button>}
     </div>
