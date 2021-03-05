@@ -17,22 +17,6 @@ const DestinationIndex=(props)=>{
       let reFiltered=[...possibleDestinations];
       reFiltered=reFiltered.filter((item)=>item.wikidata!=wiki);
       setPossibleDestinations(reFiltered);
-      // let reFiltered=[]
-      // for (let i=0;i<possibleDestinations.length;i++){
-      //   let match=false;
-      //   for(let j=0;j<selectedDestinations.length;j++){
-      //     if(possibleDestinations[i].wikidata==selectedDestinations[j].wikidata){
-      //       match=true;
-      //     }
-      //   }
-      //     if (!match){
-      //       reFiltered.push(possibleDestinations[i])
-      //     }
-        
-      // }
-      // setPossibleDestinations(reFiltered);
-      // console.log(reFiltered);
-      // console.log(possibleDestinations)
     }
 
     async function fetchSelectedDestinations(){
@@ -59,6 +43,7 @@ const DestinationIndex=(props)=>{
         <Container>
           <Row>
         <Col md="6">
+            
             <DestinationTable
               token={props.token}
               trip={props.tripForDestinations}

@@ -1,18 +1,5 @@
-#removeIt{
-    background-color: #48637e;
-    border-bottom: 5px solid #48637e;
-    border-top: 5px solid #48637e;
-    border-left: 5px solid #48637e;
-    border-right: 5px solid #48637e;
-    height: 40px;
-    transform: skew(20deg);
-    background-color: 50% transparent;
-    color: white;
-}
 
-#removeIt:hover{
-    background-color: transparent;
-}
+
 
 #categBtn{
     background-color: #48637e;
@@ -20,7 +7,7 @@
     border-top: 5px solid #48637e;
     border-left: 5px solid #48637e;
     border-right: 5px solid #48637e;
-    transform: skew(20deg);
+    transform: skew(10deg);
     background-color: 50% transparent;
     color: white;
     margin: 2px;
@@ -48,7 +35,8 @@ h3{
      margin-left: 7px;
      height: 35px;
      text-align:center;
-     transform: skew(20deg);
+
+     transform: skew(10deg);
  }
  
  #addItQ:hover{
@@ -59,7 +47,7 @@ h3{
      border-right: 5px solid #48637e;
      height: 35px;
      text-align:center;
-     transform: skew(20deg);
+     transform: skew(10deg);
      color: white;
  }
  
@@ -73,11 +61,13 @@ h3{
      border-right: 5px solid #48637e;
      height: 35px;
      text-align:center;
-     transform: skew(20deg);
+     transform: skew(10deg);
      text-align: center;
+     
  }
 
  #addIt{
+     
     background-color: #48637e;
     border-bottom: 5px solid #48637e;
     border-top: 5px solid #48637e;
@@ -85,7 +75,7 @@ h3{
     border-right: 5px solid #48637e;
     height: 35px;
     text-align:center;
-    transform: skew(20deg);
+    transform: skew(10deg);
     margin-top: 5px;
 }
 

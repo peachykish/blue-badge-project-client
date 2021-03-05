@@ -31,8 +31,9 @@ function App() {
   return (
     <div >
      
-      <Sitebar clickLogout={clearToken}/>
+      <Sitebar sessionToken={sessionToken} clickLogout={clearToken}/>
       {protectedViews()}
+      <div style={{height:'100px'}}></div>
       <Footer />
     </div>
    
