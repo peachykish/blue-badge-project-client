@@ -4,7 +4,7 @@
     border-left: 5px solid #252532;
     border-right: 5px solid #252532;
     height: 40px;
-    transform: skew(20deg);
+    transform: skew(10deg);
     background-color: 50% transparent;
     color: white;
 }
@@ -20,7 +20,7 @@
     border-left: 5px solid #252532;
     border-right: 5px solid #252532;
     height: 40px;
-    transform: skew(20deg);
+    transform: skew(10deg);
     background-color: 50% transparent;
     color: white;
 }
@@ -35,7 +35,7 @@
     border-left: 2px solid #252532;
     border-right: 2px solid #252532;
     height: 40px;
-    transform: skew(20deg);
+    transform: skew(10deg);
     background-color: 50% transparent;
     color: white;
 }
@@ -58,7 +58,7 @@ h3{
     border-right: 1px solid #48637e;
     height: 35px;
     text-align:center;
-    transform: skew(20deg);
+    transform: skew(10deg);
 }
 
 #whereTo{

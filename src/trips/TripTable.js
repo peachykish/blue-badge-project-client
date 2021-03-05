@@ -103,7 +103,7 @@ const TripTable = (props) => {
           <FrontSide style={{
             backgroundColor:"#e6e9ed",
             margin:"20px",
-            height: "100%",
+            height: "340px",
             width: "300px",
             textAlign: "left",
           }} >
@@ -158,11 +158,10 @@ const TripTable = (props) => {
             </Container>
           </FrontSide>
           <BackSide style={{
-            padding:"15px",
-            height: "100%",
-            width: "300px",
+               height: "340px",
+               width: "300px",
+               marginLeft:'20px',
             textAlign: "left",
-            margin:"20px",
           }} > 
             <Form type="submit" onSubmit={(e) => fetchEditTrips(e, trip.id)}>
               <FormGroup>
@@ -171,7 +170,9 @@ const TripTable = (props) => {
                   name="place"
                   value={editPlace}
                   onChange={(e) => setEditPlace(e.target.value)}
-       
+       />
+       </FormGroup>
+
               <FormGroup>
                 <Label htmlFor="description">Edit the Reason:</Label>
                 <Input id="editInput"

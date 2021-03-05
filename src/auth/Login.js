@@ -29,7 +29,7 @@ const Login = (props)=>{
         })
     }
     return(
-        <div>
+        <div style={{margin:'auto'}}>
             <h2 className="siglog">LOG IN</h2>
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup>
