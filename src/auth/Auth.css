@@ -13,16 +13,15 @@ html {
 
 #suBtn{
     background-color:#252532;
+    margin-left:35%;
     margin-bottom:20px;
-    transform: skew(20deg);
+    transform: skew(10deg);
 }
 
 /* username/password */
 #suLabel{
     font-size: 25px;
     font-weight: 500;
-    /* font-family: Arial, Helvetica, sans-serif; */
-    /* font-family: 'Reggae One', cursive; */
     font-family: 'Shadows Into Light', cursive;
 }
 
@@ -56,6 +55,9 @@ h2{
     font-family: 'Amatic SC', cursive;
     letter-spacing: 2px;
 }
+h3{
+  margin-left:15px
+}
 
 .siglog{
   font-size: 35px;
@@ -66,6 +68,9 @@ h2{
 #clickHere{
   background-color: #252532;
   padding: 5px;
+  height:40px;
+  margin:auto;
+  margin-top:0;
   transform: skew(10deg);
 }
 
@@ -86,7 +91,7 @@ h2{
 
   #sideBox{
     background-color: #303428;
-    color: white;
+    height:100%;
     margin-right: 20px;
     margin-top: -200px;
   }
@@ -99,7 +104,7 @@ h2{
     background-repeat: no-repeat;
     background-size: 125px;
     z-index: 1;
-
+  }
 
   #modalBody{
     margin-top: 50px;
@@ -134,6 +139,7 @@ h2{
   }
 
   .loginToggle{
+    margin:auto;
       font-size: 30px;
       color: #373843;
        -webkit-text-stroke-width: 0.5px;

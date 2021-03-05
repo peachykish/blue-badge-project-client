@@ -6,22 +6,22 @@ import "./Destinations.css"
 const DestinationCreate = (props) => {
   let count = 0
   const [kinds,setKinds]=useState('foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places')
-  const [color1, setColor1] = useState('red');
-  const [color2, setColor2] = useState('gray');
-  const [color3, setColor3] = useState('gray');
-  const [color4, setColor4] = useState('gray');
-  const [color5, setColor5] = useState('gray');
-  const [color6, setColor6] = useState('gray');
-  const [color7, setColor7] = useState('gray');
+  const [color1, setColor1] = useState('gray');
+  const [color2, setColor2] = useState('white');
+  const [color3, setColor3] = useState('white');
+  const [color4, setColor4] = useState('white');
+  const [color5, setColor5] = useState('white');
+  const [color6, setColor6] = useState('white');
+  const [color7, setColor7] = useState('white');
 
   function setClick(buttonNumber){
-    buttonNumber == 1 ? setColor1('red') : setColor1('gray');
-    buttonNumber == 2 ? setColor2('red') : setColor2('gray');
-    buttonNumber == 3 ? setColor3('red') : setColor3('gray');
-    buttonNumber == 4 ? setColor4('red') : setColor4('gray');
-    buttonNumber == 5 ? setColor5('red') : setColor5('gray');
-    buttonNumber == 6 ? setColor6('red') : setColor6('gray');
-    buttonNumber == 7 ? setColor7('red') : setColor7('gray');
+    buttonNumber == 1 ? setColor1('gray') : setColor1('white');
+    buttonNumber == 2 ? setColor2('gray') : setColor2('white');
+    buttonNumber == 3 ? setColor3('gray') : setColor3('white');
+    buttonNumber == 4 ? setColor4('gray') : setColor4('white');
+    buttonNumber == 5 ? setColor5('gray') : setColor5('white');
+    buttonNumber == 6 ? setColor6('gray') : setColor6('white');
+    buttonNumber == 7 ? setColor7('gray') : setColor7('white');
   }
   useEffect(() => {
     manageDestinations()
@@ -41,8 +41,8 @@ const DestinationCreate = (props) => {
     borderTop: '5px solid #252532',
     borderRight: '5px solid #252532',
     borderLeft: '5px solid #252532',
-    transform: 'skew(20deg)',
-    color: 'white',
+    transform: 'skew(10deg)',
+    color: 'black',
     margin: '2px',
     fontSize: 'small',
     marginBottom: '10px'
@@ -53,8 +53,8 @@ const DestinationCreate = (props) => {
     borderTop: '5px solid #252532',
     borderRight: '5px solid #252532',
     borderLeft: '5px solid #252532',
-    transform: 'skew(20deg)',
-    color: 'white',
+    transform: 'skew(10deg)',
+    color: 'black',
     margin: '2px',
     fontSize: 'small',
     marginBottom: '10px'
@@ -65,8 +65,8 @@ const DestinationCreate = (props) => {
     borderTop: '5px solid #252532',
     borderRight: '5px solid #252532',
     borderLeft: '5px solid #252532',
-    transform: 'skew(20deg)',
-    color: 'white',
+    transform: 'skew(10deg)',
+    color: 'black',
     margin: '2px',
     fontSize: 'small',
     marginBottom: '10px'
@@ -77,8 +77,8 @@ const DestinationCreate = (props) => {
     borderTop: '5px solid #252532',
     borderRight: '5px solid #252532',
     borderLeft: '5px solid #252532',
-    transform: 'skew(20deg)',
-    color: 'white',
+    transform: 'skew(10deg)',
+    color: 'black',
     margin: '2px',
     fontSize: 'small',
     marginBottom: '10px'
@@ -89,8 +89,8 @@ const DestinationCreate = (props) => {
     borderTop: '5px solid #252532',
     borderRight: '5px solid #252532',
     borderLeft: '5px solid #252532',
-    transform: 'skew(20deg)',
-    color: 'white',
+    transform: 'skew(10deg)',
+    color: 'black',
     margin: '2px',
     fontSize: 'small',
     marginBottom: '10px'
@@ -101,8 +101,8 @@ const DestinationCreate = (props) => {
     borderTop: '5px solid #252532',
     borderRight: '5px solid #252532',
     borderLeft: '5px solid #252532',
-    transform: 'skew(20deg)',
-    color: 'white',
+    transform: 'skew(10deg)',
+    color: 'black',
     margin: '2px',
     fontSize: 'small',
     marginBottom: '10px'
@@ -113,8 +113,8 @@ const DestinationCreate = (props) => {
     borderTop: '5px solid #252532',
     borderRight: '5px solid #252532',
     borderLeft: '5px solid #252532',
-    transform: 'skew(20deg)',
-    color: 'white',
+    transform: 'skew(10deg)',
+    color: 'black',
     margin: '2px',
     fontSize: 'small',
     marginBottom: '10px'
@@ -123,6 +123,7 @@ const DestinationCreate = (props) => {
   return (
     <>
     <div key={props.trip.id}>
+    <h3>Places to explore:</h3>
       <Button style={myStyle1} onClick={()=>{setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places"); setClick(1)}}>All</Button>
       <Button style={myStyle2} onClick={()=>{setCategories("foods"); setClick(2)}}> <i class="fa fa-cutlery"></i> Food</Button>
       <Button style={myStyle3} onClick={()=>{setCategories("amusements"); setClick(3)}}><i class="fa fa-bicycle"></i> Amusements</Button>
@@ -168,7 +169,7 @@ const DestinationCreate = (props) => {
   async function displayPossibleDestinations(){
         let resArray = []
         let selectedWikis=props.selectedDestinations?.map((i)=>i.wikidata);
-        while(props.filteredDest.length > count  && resArray.length < props.displayedNum){
+        while(props.filteredDest?.length > count  && resArray.length < props.displayedNum){
           let res = await validateDestination(props.filteredDest[count])
           if (res){
             let wikidataArray=resArray.map((i)=>i.wikidata)

@@ -5,15 +5,32 @@ const Signup = (props)=>{
     const [username,setUsername]=useState('');
     const [password,setPassword]=useState('');
     const [warning,setWarning]=useState(' ');
+    const [warning2,setWarning2]=useState(' ');
+
     const [authenticated, setAuthenticated] = useState(false);
-    const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
     
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      }
+
     const handleSubmit=(event)=>{
         event.preventDefault();
+        
         if(username===""||username=="undefined"){
-            setWarning("username required")
+            setWarning("Username required!")
             return;
+        } else if (!validateEmail(username)){
+            setWarning("Please enter a valid email address");
+            return;
+        } else {
+            setWarning("");       
+        }
+        if(password.length<5){
+            setWarning2("Passwords must be at least 5 characters long.")
+            return;
+        } else {
+            setWarning2("")
         }
         fetch('http://localhost:3000/user/register',{
             method:'POST',
@@ -34,7 +51,7 @@ const Signup = (props)=>{
 
 
     return(
-        <div>
+        <div style={{margin:'auto'}}>
             {/* <h1>Welcome to Travel App!</h1> */}
             <h2 className="siglog">SIGN UP</h2>
             <Form onSubmit={(e)=>handleSubmit(e)}>
@@ -46,6 +63,7 @@ const Signup = (props)=>{
                 <FormGroup>
                     <Label id="suLabel" htmlFor="password">Password</Label>
                     <Input id="textBox" onChange={(e)=>setPassword(e.target.value)} name = "password" value={password}/>
+                    <p className="warning-text">{warning2}</p>
 
                 </FormGroup>
                 {authenticated ? 
@@ -54,9 +72,8 @@ const Signup = (props)=>{
                         <ModalBody id="modalBody">This User Already Exists.  Please Create A New User Or "CLICK HERE" Below To Login With An Existing User.</ModalBody>
                         <Button variant="secondary" onClick={() => setAuthenticated(false)} id="modalButton">Close</Button>
                     </Modal> : <br/> }
-                <Button id="suBtn" type="submit">Signup</Button>
+                <Button id="suBtn" type="submit">Sign up</Button>
             </Form>
-
         </div>
     )
 }

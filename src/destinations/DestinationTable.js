@@ -1,5 +1,13 @@
 import {useEffect} from 'react'
-import {Table,Button} from 'reactstrap'
+import {
+    Button,
+    Card,
+    Row,
+    CardImg,
+    CardTitle,
+    Container,
+  } from "reactstrap";
+
 import "./Destinations.css"
 
 const DestinationTable=(props)=>{
@@ -24,14 +32,18 @@ const DestinationTable=(props)=>{
         
          return props.selectedDestinations.map((destination)=>{
             return(
-                <div key={destination.id}>
-                    <h1>{destination.name}</h1>
-                    <img src={destination.image} alt={destination.name}/>
-                    <p>{destination.descr}</p>
-                     <Button id="removeIt" onClick={()=>{
-                         props.setPossibleDestinations([...props.possibleDestinations,destination])
-                         deleteDestination(destination);}}>Remove</Button>
-                 </div>
+                <Card key={destination.wikidata} style={{ width: "250px", margin: "5px" }}>
+                <Container>
+                  <CardTitle>{destination.name}</CardTitle>
+                  <CardImg src={destination.image} style={{ height: "150px" }} />
+                  <Button id="addIt" style={{ margin: "10px" }} onClick={()=>{
+                                   props.setPossibleDestinations([...props.possibleDestinations,destination])
+                                   deleteDestination(destination);}}>Remove</Button>
+                                   
+          
+                </Container>
+              </Card>
+             
              )
          })
      }
@@ -39,15 +51,16 @@ const DestinationTable=(props)=>{
     
      return(
          <>
-        <h3>Destination Table</h3>
-        <div>
+         <Row><h3>Your list:</h3></Row>
+        <Row>
             {props.selectedDestinations.length==0?useEffect:selectedDestinationsMapper()}
+            </Row>
             <br/>
             <br/>
             <br/>
             <br/>
             <br/>
-        </div>
+        
         </>
      )
 }
