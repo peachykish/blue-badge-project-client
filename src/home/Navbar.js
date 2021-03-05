@@ -17,7 +17,7 @@ const Sitebar=(props)=>{
             {/* <Nav style={{backgroundColor: '#f1f1f1'}}>Something</Nav> */}
                 <Nav className="ml-auto" navbar>
                     <NavItem>
-                        <Button onClick={props.clickLogout}>Logout</Button>
+                    {props.sessionToken===localStorage.getItem('token')?<Button style={{transform:"skew(10deg)"}} onClick={props.clickLogout}>Logout</Button>:<></>}
                     </NavItem>
                 </Nav>
             </Collapse>

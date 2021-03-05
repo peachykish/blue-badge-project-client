@@ -9,35 +9,28 @@ import "./Auth.css"
 const Auth = (props)=>{
     const [toggle, setToggle] = useState(false);
     return(
-        <Container fluid>
+        <Container  fluid>
             <Row>
-            <Col id="sideBoxTop" md="2">
-            </Col>
+                <Col id="sideBoxTop" md="2"></Col>
                 <Col md="10">
-            <h1 id="welcome">Welcome to Travel App!</h1>
-            </Col>
-                </Row>
-                <Row>
-                <Col id="sideBox" md="2">
-                    
+                    <h1 id="welcome">Welcome to Travel App!</h1>
                 </Col>
-                <Col md="4"></Col>
-                <Col md="4">
+                </Row>
+            <Row >
+         
                    
                     {toggle ? <Signup updateToken={props.updateToken}/> : <Login updateToken={props.updateToken}/>}
-
-                    {toggle ? <p class="loginToggle">FIRST TIME TRAVELER?</p> : <p class="loginToggle">DON'T HAVE A LOGIN?  CLICK BELOW</p>}
+                </Row>
+            <Row  style={{margin:'auto'}}>
+                    {toggle ? <p class="loginToggle">RETURNING TRAVELER?</p> : <p class="loginToggle">FIRST TIME TRAVELER?</p>}
+                    </Row>
+            <Row>   
                 <Button id="clickHere" onClick={() => setToggle(!toggle)}>CLICK HERE</Button> 
-                    <br/>
-
-                </Col>
-                <Col md="4">
-                    
+                <br/>    
                 <br/>
                 <br/>
                 <br/>
                    
-                </Col>
                 
             </Row>
             
