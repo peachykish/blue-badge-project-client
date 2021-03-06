@@ -14,7 +14,6 @@ const TripCreate=(props)=>{
        const handleSubmit = (e) => {
         e.preventDefault();
         setFlipped(false);
-        console.log("backclick");
         fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${place}&apikey=${props.api_key}`)
         .then(response=>response.json())
         .then(data=>{
@@ -36,7 +35,6 @@ const TripCreate=(props)=>{
         })
             .then((res) => res.json())
             .then((tripData) => {
-                console.log('tripData',tripData);
                 setDescription('');
                 setPlace('');
                 props.fetchTrips();

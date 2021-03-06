@@ -161,7 +161,6 @@ const DestinationCreate = (props) => {
       .then((res) => res.json())
       .then((json) => {
         let places = json.features
-        console.log(json);
         let filtered = getValidPlaces(places)
         props.setFilteredDest(filtered)
       })

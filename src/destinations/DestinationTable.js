@@ -11,7 +11,6 @@ import {
 import "./Destinations.css"
 
 const DestinationTable=(props)=>{
-    console.log("dt props",props)
     useEffect(()=>props.fetchSelectedDestinations(),[props.trip])
 
     const deleteDestination=(destination)=>{
@@ -23,7 +22,6 @@ const DestinationTable=(props)=>{
             })
         })
         .then(()=>{
-            console.log("delete");
             props.fetchSelectedDestinations()
         })
     }

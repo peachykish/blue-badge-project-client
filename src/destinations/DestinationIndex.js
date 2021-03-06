@@ -6,12 +6,9 @@ import DestinationCreate from './DestinationCreate';
 
 
 const DestinationIndex=(props)=>{
-
-    console.log("destination props",props);
     const [selectedDestinations,setSelecteDestinations]=useState([]);
     const [possibleDestinations, setPossibleDestinations] = useState([]) 
     const [filteredDest, setFilteredDest] = useState([])
-    
     
     const compare=(wiki)=>{
       let reFiltered=[...possibleDestinations];
@@ -33,7 +30,6 @@ const DestinationIndex=(props)=>{
                 
           }; 
     async function tripDestinations(arr){
-      // if (props.tripForDestinations.id == newArr[0].trip_id) {
         return arr.filter((item)=>item.trip_id==props.tripForDestinations.id)
       // }
     }

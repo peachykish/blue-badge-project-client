@@ -6,12 +6,9 @@ const Login = (props)=>{
     const [username,setUsername]=useState('');
     const [password,setPassword]=useState('');
     const [authenticated, setAuthenticated] = useState(false);
-    const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
     
     const handleSubmit=(event)=>{
         event.preventDefault();
-        // console.log('Where is the event', event);
         fetch('http://localhost:3000/user/login',{
             method:'POST',
             body:JSON.stringify({user:{username:username,password:password}}),
@@ -21,7 +18,6 @@ const Login = (props)=>{
         })
         .then((res)=>res.json())
         .then((data)=>{
-            console.log(data);
             props.updateToken(data.sessionToken);
             if (props.sessionToken == undefined) {
                 setAuthenticated(true);

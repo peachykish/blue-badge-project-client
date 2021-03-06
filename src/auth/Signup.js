@@ -52,11 +52,10 @@ const Signup = (props)=>{
 
     return(
         <div style={{margin:'auto'}}>
-            {/* <h1>Welcome to Travel App!</h1> */}
             <h2 className="siglog">SIGN UP</h2>
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup>
-                    <Label id="suLabel" htmlFor="username">Username</Label>
+                    <Label id="suLabel" htmlFor="username">Email Address</Label>
                     <Input id="textBox" onChange={(e)=>setUsername(e.target.value)} name = "username" value={username}/>
                     <p className="warning-text">{warning}</p>
                 </FormGroup>
