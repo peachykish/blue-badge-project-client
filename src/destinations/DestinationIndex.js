@@ -40,9 +40,9 @@ const DestinationIndex=(props)=>{
 
 
     return (
-        <Container>
+        <Container fluid style={{margin:'auto',justifyContent: 'center'}} >
           <Row>
-        <Col md="6">
+        <Col md="6" style={{borderRight:"solid black 5px"}}>
             
             <DestinationTable
               token={props.token}
@@ -55,7 +55,6 @@ const DestinationIndex=(props)=>{
             />
           
         </Col>
-      
         <Col md="6">
           <Row><DestinationCreate compare={compare} filteredDest={filteredDest} setFilteredDest={setFilteredDest} displayedNum={props.displayedNum} setDisplayedNum={props.setDisplayedNum} token={props.token} api_key={props.api_key} trip={props.tripForDestinations} selectedDestinations={selectedDestinations} fetchSelectedDestinations={fetchSelectedDestinations} possibleDestinations={possibleDestinations} setPossibleDestinations={setPossibleDestinations}/>
           </Row>

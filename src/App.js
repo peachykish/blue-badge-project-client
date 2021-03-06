@@ -29,7 +29,7 @@ function App() {
     return (sessionToken===localStorage.getItem('token')?<Home token={sessionToken} api_key={api_key}/>:<Auth updateToken={updateToken}/>)
   }
   return (
-    <div >
+    <div>
      
       <Sitebar sessionToken={sessionToken} clickLogout={clearToken}/>
       {protectedViews()}
