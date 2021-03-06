@@ -76,7 +76,7 @@ h3{
     height: 35px;
     text-align:center;
     transform: skew(10deg);
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 #loading:hover{

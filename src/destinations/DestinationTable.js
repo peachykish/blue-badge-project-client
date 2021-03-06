@@ -36,11 +36,12 @@ const DestinationTable=(props)=>{
                 <Container>
                   <CardTitle>{destination.name}</CardTitle>
                   <CardImg src={destination.image} style={{ height: "150px" }} />
+                  <Row style={{margin:'auto',justifyContent:'center'}}>
                   <Button id="addIt" style={{ margin: "10px" }} onClick={()=>{
                                    props.setPossibleDestinations([...props.possibleDestinations,destination])
                                    deleteDestination(destination);}}>Remove</Button>
                                    
-          
+          </Row>
                 </Container>
               </Card>
              
@@ -50,9 +51,9 @@ const DestinationTable=(props)=>{
 
     
      return(
-         <>
-         <Row><h3>Your list:</h3></Row>
-        <Row>
+         <Container fluid >
+         <Row style={{margin:'auto',justifyContent: 'center'}}><h3>Your list:</h3></Row>
+        <Row style={{margin:'auto',justifyContent: 'center'}}>
             {props.selectedDestinations.length==0?useEffect:selectedDestinationsMapper()}
             </Row>
             <br/>
@@ -61,7 +62,7 @@ const DestinationTable=(props)=>{
             <br/>
             <br/>
         
-        </>
+        </Container>
      )
 }
 
