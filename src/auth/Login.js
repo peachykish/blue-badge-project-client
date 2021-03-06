@@ -33,18 +33,18 @@ const Login = (props)=>{
             <h2 className="siglog">LOG IN</h2>
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup>
-                    <Label id="suLabel" htmlFor="username">Username</Label>
+                    <Label id="suLabel" htmlFor="username">Email Address</Label>
                     <Input id="textBox" onChange={(e)=>setUsername(e.target.value)} name = "username" value={username}/>
                 </FormGroup>
                 <FormGroup>
                     <Label id="suLabel" htmlFor="password">Password</Label>
-                    <Input id="textBox" onChange={(e)=>setPassword(e.target.value)} name = "password" value={password}/>
+                    <Input type='password' id="textBox" onChange={(e)=>setPassword(e.target.value)} name = "password" value={password}/>
 
                 </FormGroup>
                 {authenticated ? 
                     <Modal isOpen={true}>
                         <ModalHeader closeButton id="modalHeader">No User Exists</ModalHeader>
-                        <ModalBody id="modalBody">Please Try Again With Valid Username and Password</ModalBody>
+                        <ModalBody id="modalBody">Please Try Again With Valid Email address and Password</ModalBody>
                         <Button id="modalButton" variant="secondary" onClick={() => setAuthenticated(false)}>Close</Button>
                     </Modal> : <br/> }
                 <Button id="suBtn" type="submit">Login</Button>
