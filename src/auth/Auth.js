@@ -24,7 +24,7 @@ const Auth = (props)=>{
             <Row  style={{margin:'auto'}}>
                     {toggle ? <p class="loginToggle">RETURNING TRAVELER?</p> : <p class="loginToggle">FIRST TIME TRAVELER?</p>}
                     </Row>
-            <Row>   
+            <Row >   
                 <Button id="clickHere" onClick={() => setToggle(!toggle)}>CLICK HERE</Button> 
                 <br/>    
                 <br/>
