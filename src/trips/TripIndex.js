@@ -25,10 +25,10 @@ const TripIndex = (props) => {
 
 
   return (
-    <Container>
-      <Row>
+    <Container  style={{margin:'auto',justifyContent: 'center'}}>
+      <Row style={{margin:'auto',justifyContent: 'center'}}>
       
-        <TripCreate
+        <TripCreate 
           token={props.token}
           fetchTrips={fetchTrips}
           api_key={props.api_key}

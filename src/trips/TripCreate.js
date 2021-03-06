@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {Button,Form,FormGroup,Label,Input} from 'reactstrap'
+import {Button,Form,FormGroup,Label,Input,Container,Row} from 'reactstrap'
 import Flippy,{FrontSide,BackSide} from 'react-flippy';
 
 import "./Trips.css"
@@ -44,8 +44,9 @@ const TripCreate=(props)=>{
         }
     return(
       
-        <Flippy flipOnClick={false} isFlipped={flipped} style={{margin:"15px",
+        <Flippy flipOnClick={false} isFlipped={flipped} style={{
         margin:"20px",
+        
         height: "340px",
         width: "300px",
         textAlign: "left",      
@@ -61,8 +62,9 @@ const TripCreate=(props)=>{
         backgroundColor:"#e6e9ed",
             
           }}>
+            <Container>
             <Form type='submit' onSubmit={handleSubmit}>
-            <FormGroup>
+            <FormGroup style={{paddingTop:'40px'}}>
                     <Label  htmlFor="place"/>Where to?
                     <Input id="whereTo" placeholder="e.g. Seattle" name="place" value={place} onChange={(e)=>setPlace(e.target.value)}/>
                 </FormGroup>
@@ -72,10 +74,12 @@ const TripCreate=(props)=>{
                     <Input id="whereTo" placeholder ="e.g. Spring Break!" name="description" value={description} 
                     onChange={(e)=>setDescription(e.target.value)}/>
                 </FormGroup>
-
-                <Button id="btns" type="submit">Submit</Button>
+<Row style={{margin:'auto',justifyContent:'center'}}>
+                <Button style={{marginRight:'30px'}} id="btns" type="submit">Submit</Button>
                 <Button id="btns" onClick={()=>setFlipped(false)}>Cancel</Button>
+                </Row>
                 </Form>
+                </Container>
                 </BackSide>
         </Flippy>
         

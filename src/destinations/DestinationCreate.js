@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {Button,Card} from "reactstrap"
+import {Button,Container,Row} from "reactstrap"
 import Entry from './DestinationEntry'
 import "./Destinations.css"
 
@@ -121,9 +121,9 @@ const DestinationCreate = (props) => {
   }
  
   return (
-    <>
-    <div key={props.trip.id}>
-    <h3>Places to explore:</h3>
+    <Container fluid >
+    <Row  style={{margin:'auto',justifyContent: 'center'}}><h3>Places to explore:</h3></Row>
+    <Row  style={{margin:'auto',justifyContent: 'center'}}>
       <Button style={myStyle1} onClick={()=>{setCategories("foods%2Csport%2Cshops%2Camusements%2Caccomodations%2Cinteresting_places"); setClick(1)}}>All</Button>
       <Button style={myStyle2} onClick={()=>{setCategories("foods"); setClick(2)}}> <i class="fa fa-cutlery"></i> Food</Button>
       <Button style={myStyle3} onClick={()=>{setCategories("amusements"); setClick(3)}}><i class="fa fa-bicycle"></i> Amusements</Button>
@@ -131,17 +131,18 @@ const DestinationCreate = (props) => {
       <Button style={myStyle5} onClick={()=>{setCategories("sport"); setClick(5)}}><i class="fa fa-futbol-o"></i> Sports</Button>
       <Button style={myStyle6} onClick={()=>{setCategories("accomodations"); setClick(6)}}><i class="fa fa-bed"></i> Accomodations</Button>
       <Button style={myStyle7} onClick={()=>{setCategories("interesting_places"); setClick(7)}}><i class="fa fa-globe"></i> Interesting Places</Button>
-
-    </div>
-      
+      </Row>
+      <Row fluid style={{margin:'auto',justifyContent: 'center'}}>
       {props.possibleDestinations?.map((entry) => (
         entry && <Entry trip_id={props.trip.id} token={props.token} item={entry} fetchSelectedDestinations={props.fetchSelectedDestinations} compare={props.compare}/>
       ))}
 
+
        {count<props.possibleDestinations?.length ? <Button style={{ width: "250px", height:"250px", margin: "5px"}} 
                                                   onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</Button> : <></>
      }
-     </>
+     </Row>
+     </Container>
   );
   function setCategories(cats){
     count=0;
