@@ -109,13 +109,13 @@ const TripTable = (props) => {
           }} >
             <Container>
               <Row>
-                <Col md="10">
-                  <h2>{trip.place}</h2>
-                </Col>
-                <Col md="2">
+            <Col>
+                  <h2 className="float-left">{trip.place}</h2>
+               
+            
                   {flipped == -1 && (
-                    <i
-                      class="fa fa-pencil"
+                    <i 
+                      class="fa fa-pencil float-right"
                       style={{ fontSize: "24px" }}
                       onClick={() => {
                         setEditDesc(trip.description);
@@ -123,8 +123,9 @@ const TripTable = (props) => {
                         setFlipped(trip.id);
                       }}
                     />
+                    
                   )}
-                </Col>
+             </Col>
               </Row>
               <Row>
                 <h3>{trip.description}</h3>
@@ -136,9 +137,9 @@ const TripTable = (props) => {
                   frameBorder="0"
                 ></iframe>
               </Row>
-              <Row style={{ marginTop: "20px" }}>
-                <Col md="10">
-                  <Button id="btns"
+              <Row style={{margin:'auto', marginTop: "10px" ,justifyContent:'center'}}>
+               
+                  <Button style={{marginRight:"50px"}}id="btns"
                     onClick={() => {
                       props.setTripForDestinations(trip);
                       props.setDisplayedNum(6);
@@ -146,14 +147,14 @@ const TripTable = (props) => {
                   >
                     Things to do
                   </Button>
-                </Col>
-                <Col md="2">
+                
+                
                   <i
                     class="fa fa-trash-o"
                     style={{ fontSize: "36px" }}
                     onClick={() => deleteTrip(trip)}
                   />
-                </Col>
+                
               </Row>
             </Container>
           </FrontSide>

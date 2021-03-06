@@ -62,7 +62,7 @@ const Signup = (props)=>{
                 </FormGroup>
                 <FormGroup>
                     <Label id="suLabel" htmlFor="password">Password</Label>
-                    <Input id="textBox" onChange={(e)=>setPassword(e.target.value)} name = "password" value={password}/>
+                    <Input type='password' id="textBox" onChange={(e)=>setPassword(e.target.value)} name = "password" value={password}/>
                     <p className="warning-text">{warning2}</p>
 
                 </FormGroup>
