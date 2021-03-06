@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   Button,
+  Row,
   Card,
   Modal,
   ModalBody,
@@ -40,9 +41,9 @@ function Entry(props) {
       <Container>
         <CardTitle>{props.item.name}</CardTitle>
         <CardImg src={props.item.image} style={{ height: "150px" }} />
-        <Button id="addIt"
+        <Row style={{margin:'10px',marginTop:'10px',justifyContent: 'center'}}><Button id="addIt"
           onClick={() => selectDestination(props.item)}
-          style={{ margin: "10px" }}
+          
         >
           Click to add
         </Button>
@@ -50,6 +51,7 @@ function Entry(props) {
         <Button id="addItQ" color="info" onClick={toggle}>
           ?
         </Button>
+        </Row>
         <Modal isOpen={modal} toggle={toggle}>
           <ModalHeader toggle={toggle}>{props.item.name}</ModalHeader>
           <ModalBody>{props.item.descr}</ModalBody>

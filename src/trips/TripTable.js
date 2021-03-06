@@ -150,7 +150,7 @@ const TripTable = (props) => {
                 <Col md="2">
                   <i
                     class="fa fa-trash-o"
-                    style={{ fontSize: "24px" }}
+                    style={{ fontSize: "36px" }}
                     onClick={() => deleteTrip(trip)}
                   />
                 </Col>

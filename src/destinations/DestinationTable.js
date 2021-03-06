@@ -36,11 +36,12 @@ const DestinationTable=(props)=>{
                 <Container>
                   <CardTitle>{destination.name}</CardTitle>
                   <CardImg src={destination.image} style={{ height: "150px" }} />
+                  <Row style={{margin:'auto',justifyContent:'center'}}>
                   <Button id="addIt" style={{ margin: "10px" }} onClick={()=>{
                                    props.setPossibleDestinations([...props.possibleDestinations,destination])
                                    deleteDestination(destination);}}>Remove</Button>
                                    
-          
+          </Row>
                 </Container>
               </Card>
              
