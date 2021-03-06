@@ -42,7 +42,7 @@ const DestinationIndex=(props)=>{
     return (
         <Container fluid style={{margin:'auto',justifyContent: 'center'}} >
           <Row>
-        <Col md="6" style={{borderRight:"solid black 5px"}}>
+        <Col md="6" style={{borderRight:"solid rgb(0, 0, 0, .5) 5px"}}>
             
             <DestinationTable
               token={props.token}
