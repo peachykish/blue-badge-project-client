@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {Button,Form,FormGroup,Label,Input,Container,Row} from 'reactstrap'
+import APIURL from '../helpers/environment';
 import Flippy,{FrontSide,BackSide} from 'react-flippy';
 
 import "./Trips.css"
@@ -25,7 +26,7 @@ const TripCreate=(props)=>{
        };
 
        const newTrip=(latitude, longitude)=>{
-        fetch("http://localhost:3000/trip", {
+        fetch(`${APIURL}/trip`, {
             method: "POST",
             body:JSON.stringify({trip:{description:description,place:place,lat:latitude,lon:longitude}}),
             headers: new Headers({

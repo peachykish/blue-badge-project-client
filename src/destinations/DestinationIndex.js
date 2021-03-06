@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import {Container, Row, Col,Table, Button} from 'reactstrap';
 import DestinationTable from './DestinationTable';
 import DestinationCreate from './DestinationCreate';
+import APIURL from '../helpers/environment';
 
 
 
@@ -17,7 +18,7 @@ const DestinationIndex=(props)=>{
     }
 
     async function fetchSelectedDestinations(){
-            let res = await fetch("http://localhost:3000/destination/", {
+            let res = await fetch(`${APIURL}/destination`, {
               method: "GET",
               headers: new Headers({
                'Content-Type': 'application/json',

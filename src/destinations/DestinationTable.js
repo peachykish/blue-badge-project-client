@@ -1,4 +1,5 @@
 import {useEffect} from 'react'
+import APIURL from '../helpers/environment';
 import {
     Button,
     Card,
@@ -14,7 +15,7 @@ const DestinationTable=(props)=>{
     useEffect(()=>props.fetchSelectedDestinations(),[props.trip])
 
     const deleteDestination=(destination)=>{
-        fetch(`http://localhost:3000/destination/${destination.id}`,{
+        fetch(`${APIURL}/destination/${destination.id}`,{
             method:'DELETE',
             headers: new Headers({
                 'Content-Type':'application/json',

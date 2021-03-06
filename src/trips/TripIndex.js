@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import APIURL from '../helpers/environment';
 import { Container, Row, Col } from "reactstrap";
 import TripCreate from "../trips/TripCreate";
 import TripTable from "../trips/TripTable";
@@ -8,7 +9,7 @@ import TripTable from "../trips/TripTable";
 const TripIndex = (props) => {
     const [trips, setTrips] = useState([]);
     const fetchTrips = () => {
-        fetch("http://localhost:3000/trip", {
+        fetch(`${APIURL}/trip`, {
           method: "GET",
           headers: new Headers({
             "Content-Type": "application/json",

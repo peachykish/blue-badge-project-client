@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import APIURL from '../helpers/environment';
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 import {
   Container,
@@ -25,7 +26,7 @@ const TripTable = (props) => {
   }
 
   const tripUpdate = (latitude, longitude, id) => {
-    fetch(`http://localhost:3000/trip/${id}`, {
+    fetch(`${APIURL}/trip/${id}`, {
       method: "PUT",
       body: JSON.stringify({
         trip: {
@@ -48,7 +49,7 @@ const TripTable = (props) => {
   };
   const deleteTrip = (trip) => {
     setFlipped(-1);
-    fetch(`http://localhost:3000/trip/${trip.id}`, {
+    fetch(`${APIURL}/trip/${trip.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",

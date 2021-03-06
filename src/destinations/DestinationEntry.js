@@ -1,4 +1,5 @@
 import { useState } from "react";
+import APIURL from '../helpers/environment';
 import {
   Button,
   Row,
@@ -16,7 +17,7 @@ function Entry(props) {
   const [modal, setModal] = useState(false);
 
   async function selectDestination(item) {
-    await fetch("http://localhost:3000/destination", {
+    await fetch(`${APIURL}/destination`, {
       method: "POST",
       body: JSON.stringify({
         destination: {
