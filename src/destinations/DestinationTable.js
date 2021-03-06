@@ -32,7 +32,7 @@ const DestinationTable=(props)=>{
         
          return props.selectedDestinations.map((destination)=>{
             return(
-                <Card key={destination.wikidata} style={{ width: "250px", margin: "5px" }}>
+                <Card key={destination.wikidata} style={{ width: "250px", margin: "5px" ,boxShadow: '0 4px 8px 0 rgba(0,0,0,.2)' }}>
                 <Container>
                   <CardTitle>{destination.name}</CardTitle>
                   <CardImg src={destination.image} style={{ height: "150px" }} />

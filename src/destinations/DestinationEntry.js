@@ -37,7 +37,7 @@ function Entry(props) {
   }
   const toggle = () => setModal(!modal);
   return (
-    <Card key={props.item.wikidata} style={{ width: "250px", margin: "5px" }}>
+    <Card key={props.item.wikidata} style={{ width: "250px", margin: "5px" , boxShadow: '0 4px 8px 0 rgba(0,0,0,.2)'}}>
       <Container>
         <CardTitle>{props.item.name}</CardTitle>
         <CardImg src={props.item.image} style={{ height: "150px" }} />
