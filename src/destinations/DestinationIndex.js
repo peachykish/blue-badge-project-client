@@ -18,13 +18,13 @@ const DestinationIndex=(props)=>{
     }
 
     async function fetchSelectedDestinations(){
-            let res = await fetch(`${APIURL}/destination`, {
+          console.log(props);
+            let res = await fetch(`${APIURL}/destination/`, {
               method: "GET",
               headers: new Headers({
-               'Content-Type': 'application/json',
-                Authorization: props.token,       
+                Authorization: props.token    
               }),
-            })
+          })
               res = await res.json()
               let newArr = await tripDestinations(res.entries)
               await setSelecteDestinations(newArr);
