@@ -50,9 +50,9 @@ const DestinationTable=(props)=>{
 
     
      return(
-         <>
-         <Row><h3>Your list:</h3></Row>
-        <Row>
+         <Container fluid >
+         <Row style={{margin:'auto',justifyContent: 'center'}}><h3>Your list:</h3></Row>
+        <Row style={{margin:'auto',justifyContent: 'center'}}>
             {props.selectedDestinations.length==0?useEffect:selectedDestinationsMapper()}
             </Row>
             <br/>
@@ -61,7 +61,7 @@ const DestinationTable=(props)=>{
             <br/>
             <br/>
         
-        </>
+        </Container>
      )
 }
 
