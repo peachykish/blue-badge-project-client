@@ -138,7 +138,7 @@ const DestinationCreate = (props) => {
       ))}
 
 
-       {count<props.possibleDestinations?.length ? <Button style={{ width: "250px", height:"250px", margin: "5px"}} 
+       {count<props.possibleDestinations?.length ? <Button style={{ width: "250px", height:"250px", margin: "5px", boxShadow: '0 4px 8px 0 rgba(0,0,0,.2)'}} 
                                                   onClick={()=>props.setDisplayedNum(props.displayedNum+6)}>Load more</Button> : <></>
      }
      </Row>
